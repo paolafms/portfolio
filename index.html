@@ -1,0 +1,3077 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paola Fagundes | UX/UI Designer</title>
+    <meta name="description" content="Portfólio de UX/UI Designer especializada em experiências digitais intuitivas e acessíveis." />
+    
+    <!-- ===== FAVICON - CORRIGIDO ===== -->
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/favicon.png" />
+    
+    <!-- ===== FONTES: SATOSHI ===== -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1D9E75;
+            --primary-dark: #167a5c;
+            --primary-glow: rgba(29, 158, 117, 0.3);
+            --secondary: #2C5F8A;
+            --bg-dark: #0a0f0e;
+            --text-white: #FFFFFF;
+            --text-light: #e0f0ea;
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --radius-card: 20px;
+            --radius-btn: 12px;
+            --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-title: 'Satoshi', 'Inter', sans-serif;
+            --font-body: 'Satoshi', 'Inter', sans-serif;
+            --max-width: 1200px;
+            
+            /* Cores do holograma */
+            --hologram-1: #1D9E75;
+            --hologram-2: #2C5F8A;
+            --hologram-3: #8B5CF6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ===== ANIMATED BACKGROUND ===== */
+        .bg-animated {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .bg-animated .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: floatOrb 20s ease-in-out infinite alternate;
+        }
+
+        .bg-animated .orb:nth-child(1) {
+            width: 600px;
+            height: 600px;
+            background: var(--primary);
+            top: -10%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .bg-animated .orb:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            background: var(--secondary);
+            bottom: -10%;
+            right: -10%;
+            animation-delay: -7s;
+        }
+
+        .bg-animated .orb:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            background: #1a6b50;
+            top: 50%;
+            left: 50%;
+            animation-name: floatOrb3;
+            animation-delay: -14s;
+        }
+
+        @keyframes floatOrb {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(80px, -60px) scale(1.1);
+            }
+            66% {
+                transform: translate(-40px, 80px) scale(0.9);
+            }
+            100% {
+                transform: translate(60px, 40px) scale(1.05);
+            }
+        }
+
+        @keyframes floatOrb3 {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            33% {
+                transform: translate(calc(-50% + 80px), calc(-50% - 60px)) scale(1.1);
+            }
+            66% {
+                transform: translate(calc(-50% - 40px), calc(-50% + 80px)) scale(0.9);
+            }
+            100% {
+                transform: translate(calc(-50% + 60px), calc(-50% + 40px)) scale(1.05);
+            }
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        a:hover {
+            color: var(--text-white);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--text-white) 60%, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            opacity: 0.7;
+            margin-bottom: 48px;
+        }
+
+        .section-title .highlight {
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: var(--radius-btn);
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--text-white);
+            border-color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 32px rgba(29, 158, 117, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-white);
+            border-color: rgba(255, 255, 255, 0.2);
+            transition: all var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-outline-primary {
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary);
+            color: var(--text-white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(29, 158, 117, 0.3);
+        }
+
+        .btn-sm {
+            padding: 10px 22px;
+            font-size: 0.85rem;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: calc(100% - 48px);
+            max-width: 1200px;
+            background: rgba(10, 15, 14, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 60px;
+            padding: 12px 32px;
+            transition: all var(--transition);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-white);
+        }
+
+        .logo-placeholder {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-placeholder img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-white);
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-white);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .btn {
+            padding: 10px 24px;
+            font-size: 0.85rem;
+            transition: all var(--transition);
+        }
+
+        .nav-links .btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 4px 20px rgba(29, 158, 117, 0.3);
+        }
+
+        /* ===== NAV TOGGLE ===== */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            z-index: 1001;
+            width: 30px;
+            height: 30px;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background-color: var(--text-white);
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+            transform-origin: center center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .nav-toggle span:nth-child(1) {
+            top: 8px;
+            transform: translateX(-50%) rotate(0deg);
+        }
+
+        .nav-toggle span:nth-child(2) {
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            opacity: 1;
+        }
+
+        .nav-toggle span:nth-child(3) {
+            bottom: 8px;
+            transform: translateX(-50%) rotate(0deg);
+        }
+
+        /* Estado aberto - transforma em X */
+        .nav-toggle.active span:nth-child(1) {
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-50%) translateX(-20px);
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+        }
+
+        /* ===== OVERLAY PARA FECHAR MENU ===== */
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        .nav-overlay.active {
+            display: block;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            position: relative;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-title);
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 8px;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-content h1 .nome-branco {
+            color: var(--text-white);
+        }
+
+        .hero-content h1 .nome-verde {
+            color: var(--primary);
+        }
+
+        .hero-content .role-wrapper {
+            display: inline-block;
+            position: relative;
+            margin-bottom: 20px;
+            border-radius: 40px;
+            padding: 6px 22px;
+            background: rgba(29, 158, 117, 0.12);
+            border: 1px solid rgba(29, 158, 117, 0.2);
+            transition: all var(--transition);
+        }
+
+        .hero-content .role-wrapper:hover {
+            border-color: var(--hologram-2);
+            box-shadow: 0 0 30px rgba(29, 158, 117, 0.15), 0 0 60px rgba(44, 95, 138, 0.1);
+            background: rgba(29, 158, 117, 0.18);
+        }
+
+        .hero-content .role-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 42px;
+            padding: 2px;
+            background: linear-gradient(
+                135deg,
+                transparent 40%,
+                var(--hologram-1),
+                var(--hologram-2),
+                var(--hologram-3),
+                transparent 60%
+            );
+            background-size: 300% 300%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+            animation: hologramMove 4s ease-in-out infinite;
+        }
+
+        .hero-content .role-wrapper:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes hologramMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .hero-content .role {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
+            display: inline-block;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 480px;
+            margin-bottom: 36px;
+            opacity: 0.85;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* ===== FOTO DE PERFIL ===== */
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-image .photo-frame {
+            width: 100%;
+            max-width: 380px;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-glow), var(--secondary));
+            padding: 4px;
+            position: relative;
+            animation: pulseGlow 3s ease-in-out infinite;
+            box-shadow: 0 0 80px rgba(29, 158, 117, 0.2);
+        }
+
+        @keyframes pulseGlow {
+            0%,
+            100% {
+                box-shadow: 0 0 60px rgba(29, 158, 117, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 100px rgba(29, 158, 117, 0.4);
+            }
+        }
+
+        .hero-image .photo-frame .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: var(--primary);
+            overflow: hidden;
+        }
+
+        .hero-image .photo-frame .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* ===== FLOATING BADGES ===== */
+        .floating-badge {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 16px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-light);
+            animation: floatBadge 4s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .floating-badge i {
+            color: var(--primary);
+            font-size: 0.85rem;
+        }
+
+        .floating-badge:nth-child(2) {
+            top: 5%;
+            left: -8%;
+            animation-delay: -1s;
+        }
+
+        .floating-badge:nth-child(3) {
+            bottom: 10%;
+            left: -10%;
+            animation-delay: -2.5s;
+            padding: 6px 12px;
+            font-size: 0.65rem;
+        }
+
+        .floating-badge:nth-child(3) i {
+            font-size: 0.7rem;
+        }
+
+        .floating-badge:nth-child(4) {
+            top: 45%;
+            right: -12%;
+            animation-delay: -0.5s;
+        }
+
+        @keyframes floatBadge {
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-12px) rotate(2deg);
+            }
+        }
+
+        /* ============================================================
+                   SOBRE - NOVO LAYOUT (OPÇÃO 2)
+                   Texto em cima (largura total) + cards em grid 2x2
+                   ============================================================ */
+        .sobre .container {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .sobre-texto {
+            max-width: 100%;
+        }
+
+        .sobre-texto p {
+            margin-bottom: 16px;
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .sobre-texto p:last-child {
+            margin-bottom: 0;
+        }
+
+        .sobre-texto .ingles {
+            margin-top: 12px;
+            display: inline-block;
+            background: rgba(29, 158, 117, 0.1);
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+	    font-weight: bold;
+            color: var(--primary);
+            border: 1px solid rgba(29, 158, 117, 0.15);
+        }
+
+        .sobre-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        /* ===== INFO BLOCKS COM HOLOGRAMA ===== */
+        .info-block {
+            padding: 24px 24px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: var(--radius-card);
+            border-left: 3px solid var(--primary);
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-block::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-card);
+            padding: 1px;
+            background: linear-gradient(
+                135deg,
+                transparent 50%,
+                var(--hologram-1),
+                var(--hologram-2),
+                var(--hologram-3),
+                transparent 70%
+            );
+            background-size: 300% 300%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+            animation: hologramMove 4s ease-in-out infinite;
+        }
+
+        .info-block:hover::before {
+            opacity: 1;
+        }
+
+        .info-block:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(29, 158, 117, 0.1);
+            border-left-color: var(--hologram-3);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .info-block h4 {
+            font-family: var(--font-title);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color var(--transition);
+        }
+
+        .info-block:hover h4 {
+            color: var(--hologram-3);
+        }
+
+        .info-block p,
+        .info-block ul {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .info-block ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+            margin-top: 4px;
+            padding: 0;
+        }
+
+        .info-block ul li {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .info-block ul li i {
+            color: var(--primary);
+            font-size: 0.8rem;
+            transition: color var(--transition);
+        }
+
+        .info-block:hover ul li i {
+            color: var(--hologram-3);
+        }
+
+        /* ===== FORMAÇÃO E EXPERIÊNCIAS - ESTILO VISUAL ===== */
+        .formacao-item,
+        .experiencia-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all var(--transition);
+        }
+
+        .formacao-item:last-child,
+        .experiencia-item:last-child {
+            border-bottom: none;
+        }
+
+        .formacao-item:hover,
+        .experiencia-item:hover {
+            transform: translateX(6px)
+        }
+
+        .formacao-item .formacao-icon,
+        .experiencia-item .experiencia-icon {
+            width: 34px;
+            height: 34px;
+            min-width: 34px;
+            border-radius: 50%;
+            background: rgba(29, 158, 117, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.85rem;
+            border: 1px solid rgba(29, 158, 117, 0.15);
+            transition: all var(--transition);
+            margin-top: 2px;
+        }
+
+        .formacao-item:hover .formacao-icon,
+        .experiencia-item:hover .experiencia-icon {
+            background: rgba(29, 158, 117, 0.2);
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .formacao-item .formacao-content,
+        .experiencia-item .experiencia-content {
+            flex: 1;
+        }
+
+        .formacao-item .formacao-content .curso,
+        .experiencia-item .experiencia-content .titulo {
+            font-weight: 600;
+            color: var(--text-white);
+            font-size: 0.9rem;
+            line-height: 1.3;
+        }
+
+        .formacao-item .formacao-content .instituicao-periodo,
+        .experiencia-item .experiencia-content .empresa-periodo {
+            color: var(--text-light);
+            opacity: 0.7;
+            font-size: 0.8rem;
+        }
+
+        .experiencia-item .experiencia-content .descricao {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-top: 4px;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* ===== ÁREAS DE INTERESSE E SOFT SKILLS ===== */
+        .info-block .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .info-block .tags-list .tag-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all var(--transition);
+        }
+
+        .info-block:hover .tags-list .tag-item {
+            border-color: rgba(29, 158, 117, 0.2);
+            background: rgba(29, 158, 117, 0.05);
+        }
+
+        .info-block .tags-list .tag-item i {
+            color: var(--primary);
+            font-size: 0.7rem;
+            margin-right: 4px;
+        }
+
+        /* ===== HABILIDADES E FERRAMENTAS ===== */
+        .habilidades-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 32px;
+        }
+
+	/* ===== SCROLL MARGIN PARA COMPENSAR HEADER ===== */
+	#sobre,
+	#habilidades,
+	#projetos,
+	#contato {
+    	scroll-margin-top: 35px;
+	}
+
+        .habilidade-categoria {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-card);
+            padding: 28px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all var(--transition);
+        }
+
+        .habilidade-categoria:hover {
+            border-color: rgba(29, 158, 117, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(29, 158, 117, 0.05);
+        }
+
+        .habilidade-categoria h3 {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .habilidade-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .habilidade-tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            white-space: nowrap;
+        }
+
+        .habilidade-tag i {
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+
+        .habilidade-tag:hover {
+            background: rgba(29, 158, 117, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            color: var(--text-white);
+        }
+
+        /* ===== PROJETOS ===== */
+        .filtros {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .filtro-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-light);
+            padding: 10px 26px;
+            border-radius: 40px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .filtro-btn:hover {
+            border-color: var(--primary);
+            color: var(--text-white);
+            background: rgba(29, 158, 117, 0.05);
+        }
+
+        .filtro-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-color: var(--primary);
+            color: var(--text-white);
+        }
+
+        .projetos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .projeto-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: opacity 0.3s ease, transform 0.3s ease,
+                        border-color var(--transition), box-shadow var(--transition);
+            box-shadow: var(--shadow-card);
+            position: relative;
+            z-index: 1;
+        }
+
+        .projeto-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-card);
+            padding: 2px;
+            background: linear-gradient(
+                135deg,
+                transparent 40%,
+                var(--hologram-1),
+                var(--hologram-2),
+                var(--hologram-3),
+                transparent 60%
+            );
+            background-size: 300% 300%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+            animation: hologramMove 4s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        .projeto-card::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: calc(var(--radius-card) + 2px);
+            background: radial-gradient(
+                circle at 50% 50%,
+                rgba(29, 158, 117, 0.05) 0%,
+                rgba(44, 95, 138, 0.05) 30%,
+                rgba(139, 92, 246, 0.05) 60%,
+                transparent 80%
+            );
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .projeto-card:hover::before {
+            opacity: 1;
+        }
+
+        .projeto-card:hover::after {
+            opacity: 1;
+        }
+
+        .projeto-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 
+                0 12px 48px rgba(29, 158, 117, 0.15),
+                0 0 60px rgba(29, 158, 117, 0.05);
+            border-color: rgba(29, 158, 117, 0.2);
+        }
+
+        .projeto-card:hover .projeto-thumbnail img {
+            transform: scale(1.03);
+        }
+
+        .projeto-thumbnail {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            position: relative;
+            background: var(--bg-dark);
+            z-index: 1;
+        }
+
+        .projeto-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .projeto-thumbnail .thumb-label {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--primary);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(29, 158, 117, 0.2);
+            z-index: 4;
+        }
+
+        .projeto-thumbnail .em-breve {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--primary);
+            border: 1.5px solid var(--primary);
+            backdrop-filter: blur(8px);
+            letter-spacing: 0.08em;
+            animation: pulseBreve 2s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(29, 158, 117, 0.1);
+            transition: all var(--transition);
+            text-transform: uppercase;
+            z-index: 4;
+        }
+
+        @keyframes pulseBreve {
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                box-shadow: 0 0 15px rgba(29, 158, 117, 0.05);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.04);
+                box-shadow: 0 0 30px rgba(29, 158, 117, 0.2);
+                border-color: var(--primary-glow);
+            }
+        }
+
+        .projeto-card:hover .em-breve {
+            animation: none;
+            transform: translate(-50%, -50%) scale(1.06);
+            border-color: var(--text-white);
+            color: var(--text-white);
+            box-shadow: 0 0 40px rgba(29, 158, 117, 0.3);
+        }
+
+        .projeto-info {
+            padding: 20px 24px 24px;
+            position: relative;
+            z-index: 4;
+        }
+
+        .projeto-info .categoria {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .projeto-info h3 {
+            font-family: var(--font-title);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .projeto-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            opacity: 0.7;
+            margin-bottom: 16px;
+        }
+
+        .projeto-info .btn {
+            font-size: 0.85rem;
+            padding: 8px 20px;
+        }
+
+        /* ===== CASE OVERLAY ===== */
+        .case-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            overflow-y: auto;
+            padding: 20px 20px;
+        }
+
+        .case-overlay.active {
+            display: block;
+        }
+
+        .case-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-card);
+            padding: 48px 48px 60px;
+            position: relative;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.7);
+        }
+
+        .case-close {
+            position: sticky;
+            top: 0px;
+            float: right;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-white);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            margin-bottom: 20px;
+        }
+
+        .case-close:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: rotate(90deg);
+        }
+
+        .case-banner {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 22px auto;
+            background: var(--bg-dark);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 30px rgba(29, 158, 117, 0.03);
+            transition: all var(--transition);
+        }
+
+        .case-banner::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 13px;
+            padding: 1.5px;
+            background: linear-gradient(
+                135deg,
+                rgba(29, 158, 117, 0.15),
+                rgba(44, 95, 138, 0.15),
+                rgba(139, 92, 246, 0.1),
+                rgba(29, 158, 117, 0.15)
+            );
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 1;
+            animation: borderGlow 4s ease-in-out infinite;
+            background-size: 300% 300%;
+        }
+
+        @keyframes borderGlow {
+            0% {
+                background-position: 0% 50%;
+                opacity: 0.5;
+            }
+            50% {
+                background-position: 100% 50%;
+                opacity: 1;
+            }
+            100% {
+                background-position: 0% 50%;
+                opacity: 0.5;
+            }
+        }
+
+        .case-banner:hover {
+            border-color: rgba(29, 158, 117, 0.2);
+            box-shadow: 0 0 50px rgba(29, 158, 117, 0.08);
+        }
+
+        .case-banner img {
+            width: 100%;
+            height: auto;
+            max-height: 613px;
+            object-fit: contain;
+            display: block;
+            background: var(--bg-dark);
+            position: relative;
+            z-index: 2;
+        }
+
+        .case-header {
+            margin-top: 8px;
+	    margin-bottom: 25px;
+        }
+
+        .case-header h2 {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .case-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .case-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .case-meta i {
+            color: var(--primary);
+            width: 18px;
+        }
+
+        .case-body {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .case-body h4 {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .case-body p {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .case-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: var(--text-light);
+        }
+
+        .case-body ul li {
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .case-body ul li i {
+            color: var(--primary);
+            font-size: 0.7rem;
+        }
+
+        .case-body .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .case-body .grid-2col .info-card {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .case-body .grid-2col .info-card h5 {
+            font-family: var(--font-title);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .case-body .wireframe-placeholder {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            border: 2px dashed rgba(255, 255, 255, 0.06);
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .case-body .wireframe-placeholder i {
+            font-size: 2.4rem;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        /* ===== PALETA DE CORES - TABELA ===== */
+        .cores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .cores-grid .cor-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all var(--transition);
+        }
+
+        .cores-grid .cor-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .cores-grid .cor-item .cor-preview {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .cores-grid .cor-item .cor-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cores-grid .cor-item .cor-info .cor-nome {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-light);
+            opacity: 0.7;
+        }
+
+        .cores-grid .cor-item .cor-info .cor-hex {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-white);
+            font-family: 'Courier New', monospace;
+        }
+
+        .case-body .figma-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(29, 158, 117, 0.1);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 1px solid rgba(29, 158, 117, 0.15);
+            transition: all var(--transition);
+            margin-top: 8px;
+        }
+
+        .case-body .figma-link:hover {
+            background: rgba(29, 158, 117, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(29, 158, 117, 0.15);
+        }
+
+        /* ===== CONTATO ===== */
+        .contato-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .contato-info p {
+            color: var(--text-light);
+            margin-bottom: 24px;
+	    margin-top: -30px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .contato-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .contato-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all var(--transition);
+        }
+
+        .contato-links a:hover {
+            background: rgba(29, 158, 117, 0.1);
+            border-color: var(--primary);
+            color: var(--text-white);
+            transform: translateY(-2px);
+        }
+
+        .contato-links a i {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .contato-form {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 32px;
+            border-radius: var(--radius-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+	    margin-top: -150px;
+        }
+
+        .contato-form .form-group {
+            margin-bottom: 18px;
+        }
+
+        .contato-form label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: var(--text-light);
+        }
+
+        .contato-form input,
+        .contato-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--text-white);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all var(--transition);
+        }
+
+        .contato-form input:focus,
+        .contato-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(29, 158, 117, 0.1);
+        }
+
+        .contato-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contato-form .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .form-success {
+            display: none;
+            padding: 16px;
+            border-radius: 12px;
+            background: rgba(29, 158, 117, 0.15);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 32px 0;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .footer-logo span {
+            font-family: var(--font-title);
+            font-weight: 700;
+            color: var(--text-white);
+            font-size: 1rem;
+        }
+
+        .footer-logo span span {
+            color: var(--primary);
+        }
+
+        .footer p {
+            color: var(--text-light);
+            opacity: 0.5;
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+        }
+
+        .footer a {
+            color: var(--primary);
+        }
+
+        .footer a:hover {
+            color: var(--text-white);
+        }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--text-white);
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 24px rgba(29, 158, 117, 0.4);
+            transition: all var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(16px);
+            z-index: 500;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 40px rgba(29, 158, 117, 0.5);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image .photo-frame {
+                max-width: 280px;
+            }
+
+            .floating-badge {
+                display: flex !important;
+            }
+
+            .sobre-cards-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .habilidades-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+            }
+
+            .contato-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-container {
+                padding: 32px 20px;
+            }
+
+            .case-body .grid-2col {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar {
+                top: 12px;
+                width: calc(100% - 24px);
+                padding: 12px 20px;
+                border-radius: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content .role {
+                font-size: 1.1rem;
+            }
+
+            .case-banner {
+                max-width: 100%;
+            }
+
+            .case-close {
+                top: 0px;
+                width: 44px;
+                height: 44px;
+                font-size: 1.3rem;
+                margin-bottom: 16px;
+            }
+
+            .cores-grid {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            }
+
+            .sobre-texto p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #langToggle { display: none; }
+
+            .lang-mobile-item { display: flex; justify-content: center; }
+
+            .lang-btn-mobile {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                background: rgba(255, 255, 255, 0.06);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 60px;
+                padding: 10px 20px;
+                color: var(--text-light);
+                font-family: var(--font-body);
+                font-size: 0.85rem;
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                cursor: pointer;
+            }
+            .lang-btn-mobile .lang-pt { color: var(--primary); }
+            .lang-btn-mobile .lang-divider { opacity: 0.3; }
+            .lang-btn-mobile.en .lang-en { color: var(--primary); }
+            .lang-btn-mobile.en .lang-pt { color: var(--text-light); }
+
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: calc(100% + 24px);
+                left: 12px;
+                right: 12px;
+                background: rgba(10, 15, 14, 0.95);
+                backdrop-filter: blur(24px);
+                padding: 24px;
+                gap: 16px;
+                border-radius: 24px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+                opacity: 0;
+                transform: translateY(-10px);
+                pointer-events: none;
+                visibility: hidden;
+                z-index: 999;
+            }
+
+            .nav-links.open {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: auto;
+                visibility: visible;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-content .role-wrapper {
+                margin-top: 12px;
+                margin-bottom: 16px;
+            }
+
+            .hero-content .role {
+                font-size: 1rem;
+                padding: 4px 16px;
+            }
+
+            .floating-badge {
+                display: flex !important;
+                font-size: 0.6rem;
+                padding: 6px 10px;
+            }
+
+            .floating-badge i {
+                font-size: 0.65rem;
+            }
+
+            .floating-badge:nth-child(2) {
+                top: 2%;
+                left: -5%;
+            }
+
+            .floating-badge:nth-child(3) {
+                bottom: 5%;
+                left: -5%;
+                padding: 4px 8px;
+                font-size: 0.5rem;
+            }
+
+            .floating-badge:nth-child(3) i {
+                font-size: 0.55rem;
+            }
+
+            .floating-badge:nth-child(4) {
+                top: 40%;
+                right: -5%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projetos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contato-links {
+                flex-direction: column;
+            }
+
+            .contato-links a {
+                justify-content: center;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+                min-height: auto;
+            }
+
+            .hero-image .photo-frame {
+                max-width: 220px;
+            }
+
+            .habilidades-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .sobre-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .case-banner {
+                max-width: 100%;
+            }
+
+            .case-close {
+                top: 0px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+                margin-bottom: 12px;
+            }
+
+            .info-block ul {
+                flex-direction: column;
+                gap: 4px 0;
+            }
+
+            .info-block ul li {
+                white-space: normal;
+            }
+
+            .cores-grid {
+                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            }
+
+            .formacao-item,
+            .experiencia-item {
+                padding: 10px 0;
+            }
+
+            .formacao-item .formacao-icon,
+            .experiencia-item .experiencia-icon {
+                width: 30px;
+                height: 30px;
+                min-width: 30px;
+                font-size: 0.75rem;
+            }
+
+            .sobre-texto p {
+                font-size: 0.95rem;
+            }
+
+	        .contato-form {
+        	  margin-top: 10px;
+    		}
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content .role-wrapper {
+                margin-top: 14px;
+                margin-bottom: 12px;
+                padding: 4px 14px;
+            }
+
+            .hero-content .role {
+                font-size: 0.85rem;
+            }
+
+            .btn {
+                padding: 14px 24px;
+                font-size: 0.9rem;
+            }
+
+            .case-container {
+                padding: 20px 16px;
+            }
+
+            .case-header h2 {
+                font-size: 1.4rem;
+            }
+
+            .navbar {
+                padding: 10px 16px;
+            }
+
+            .logo-text {
+                font-size: 1rem;
+            }
+
+            .logo-placeholder img {
+                height: 32px;
+            }
+
+            .case-banner {
+                max-width: 100%;
+            }
+
+            .case-close {
+                top: 0px;
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+
+            .info-block ul {
+                flex-direction: column;
+                gap: 4px 0;
+            }
+
+            .info-block ul li {
+                white-space: normal;
+            }
+
+            .floating-badge {
+                font-size: 0.5rem;
+                padding: 4px 8px;
+            }
+
+            .floating-badge i {
+                font-size: 0.5rem;
+            }
+
+            .floating-badge:nth-child(2) {
+                top: 0%;
+                left: -3%;
+            }
+
+            .floating-badge:nth-child(3) {
+                bottom: 3%;
+                left: -3%;
+                padding: 3px 6px;
+                font-size: 0.45rem;
+            }
+
+            .floating-badge:nth-child(3) i {
+                font-size: 0.45rem;
+            }
+
+            .floating-badge:nth-child(4) {
+                top: 35%;
+                right: -3%;
+            }
+
+            .cores-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+
+            .formacao-item,
+            .experiencia-item {
+                padding: 8px 0;
+                gap: 10px;
+            }
+
+            .formacao-item .formacao-icon,
+            .experiencia-item .experiencia-icon {
+                width: 26px;
+                height: 26px;
+                min-width: 26px;
+                font-size: 0.65rem;
+            }
+
+            .formacao-item .formacao-content .curso,
+            .experiencia-item .experiencia-content .titulo {
+                font-size: 0.85rem;
+            }
+
+            .formacao-item .formacao-content .instituicao-periodo,
+            .experiencia-item .experiencia-content .empresa-periodo {
+                font-size: 0.75rem;
+            }
+
+            .experiencia-item .experiencia-content .descricao {
+                font-size: 0.8rem;
+            }
+
+            .sobre-texto p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ===== ANIMAÇÕES ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-up.delay-1 {
+            transition-delay: 0.1s;
+        }
+        .fade-up.delay-2 {
+            transition-delay: 0.2s;
+        }
+        .fade-up.delay-3 {
+            transition-delay: 0.3s;
+        }
+        .fade-up.delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        /* ===== GOOGLE TRANSLATE: OCULTAR BARRA ===== */
+        .goog-te-banner-frame,
+        .skiptranslate,
+        #goog-gt-tt,
+        .goog-te-balloon-frame { display: none !important; }
+        body { top: 0 !important; }
+
+        /* ===== BOTÃO DE IDIOMA ===== */
+        @media (min-width: 769px) {
+            .lang-mobile-item { display: none; }
+        }
+
+        .lang-toggle {
+            position: fixed;
+            top: 35px;
+            right: 40px;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(10, 15, 14, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 60px;
+            padding: 10px 14px;
+            color: var(--text-light);
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            transition: all var(--transition);
+        }
+        .lang-toggle:hover {
+            border-color: var(--primary);
+            color: var(--text-white);
+        }
+        .lang-toggle .lang-pt,
+        .lang-toggle .lang-en { transition: color 0.2s; }
+        .lang-toggle.en .lang-en { color: var(--primary); }
+        .lang-toggle:not(.en) .lang-pt { color: var(--primary); }
+        .lang-divider { opacity: 0.3; }
+
+        /* ===== ACESSIBILIDADE: MOVIMENTO REDUZIDO ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ===== FOCO VISÍVEL ===== */
+        :focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== OVERLAY PARA FECHAR MENU ===== -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- ===== ANIMATED BACKGROUND ===== -->
+    <div class="bg-animated" aria-hidden="true">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar" aria-label="Navegação principal">
+        <div class="container">
+            <a href="#" class="logo-container" aria-label="Voltar ao topo">
+                <div class="logo-placeholder" id="logoPlaceholder">
+                    <img src="assets/logo.png" alt="Paola Fagundes - UX/UI Designer" />
+                </div>
+                <span class="logo-text">Paola<span>Fagundes</span></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+                <li><a href="#projetos" class="nav-link">Projetos</a></li>
+                <li><a href="#contato" class="nav-link">Contato</a></li>
+                <li>
+                    <a href="assets/Curriculo-Paola-Fagundes.pdf" class="btn btn-primary btn-sm" target="_blank">
+                        <i class="fa-solid fa-file"></i> Currículo
+                    </a>
+                </li>
+                <li class="lang-mobile-item">
+                    <button class="lang-btn-mobile" aria-label="Trocar idioma">
+                        <span class="lang-pt">BR</span>
+                        <span class="lang-divider">|</span>
+                        <span class="lang-en">EN</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <button class="lang-toggle" id="langToggle" aria-label="Trocar idioma">
+        <span class="lang-pt">BR</span>
+        <span class="lang-divider">|</span>
+        <span class="lang-en">EN</span>
+    </button>
+
+    <!-- Google Translate (oculto) -->
+    <div id="google_translate_element" style="display:none"></div>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content fade-up visible">
+                <h1>
+                    <span class="nome-branco">Paola</span>
+                    <span class="nome-verde">Fagundes</span>
+                </h1>
+                <div class="role-wrapper">
+                    <span class="role">UX/UI Designer</span>
+                </div>
+                <p>Proponho soluções digitais claras, acessíveis e bem pensadas.</p>
+                <div class="hero-buttons">
+                    <a href="#projetos" class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i> Ver Projetos
+                    </a>
+                    <a href="assets/Curriculo-Paola-Fagundes.pdf" class="btn btn-secondary" target="_blank">
+                        <i class="fa-solid fa-file"></i> Currículo
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image fade-up delay-1 visible">
+                <div class="photo-frame">
+                    <div class="photo-placeholder" id="photoPlaceholder">
+                        <img src="assets/fotoperfil.png" alt="Paola Fagundes" />
+                    </div>
+                    <!-- UX/UI Designer - ESQUERDA -->
+                    <div class="floating-badge" style="top:5%; left:-8%;">
+                        <i class="fas fa-pen-fancy"></i> UX/UI Designer
+                    </div>
+                    <!-- IA & No-Code - BAIXO ESQUERDA (MENOR) -->
+                    <div class="floating-badge" style="bottom:10%; left:-10%; padding:6px 12px; font-size:0.65rem;">
+                        <i class="fas fa-robot" style="font-size:0.7rem;"></i> IA & No-Code
+                    </div>
+                    <!-- Figma - DIREITA -->
+                    <div class="floating-badge" style="top:45%; right:-12%;">
+                        <i class="fab fa-figma"></i> Figma
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SOBRE - NOVO LAYOUT (OPÇÃO 2) ===== -->
+    <section class="sobre section-padding" id="sobre">
+        <div class="container">
+            <!-- Texto em cima - largura total -->
+            <div class="sobre-texto fade-up">
+                <h2 class="section-title">Sobre <span class="highlight">Mim</span></h2>
+                <p>
+                    UX/UI Designer, com formação em Sistemas de Informação e pós-graduação em andamento em Design de Produtos Digitais (UX/UI). Crio wireframes, fluxos, protótipos e design systems no Figma, e também uso IA e no-code para transformar ideias em interfaces funcionais com agilidade. Tenho como objetivo atuar em projetos escaláveis, com foco em pesquisa, usabilidade e design estratégico, contribuindo para a evolução contínua das soluções digitais.
+                <p>
+                <span class="ingles"><i class="fa-solid fa-language"></i> Inglês: Intermediário (leitura)</span>
+            </div>
+
+            <!-- Cards em grid 2x2 -->
+            <div class="sobre-cards-grid fade-up delay-1">
+                <!-- ===== FORMAÇÃO ===== -->
+                <div class="info-block">
+                    <h4><i class="fas fa-graduation-cap"></i> Formação</h4>
+                    <div class="formacao-item">
+                        <div class="formacao-icon">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <div class="formacao-content">
+                            <div class="curso">Pós-graduação em Design de Produtos Digitais UX/UI</div>
+                            <div class="instituicao-periodo">Anhanguera · 2026 - Em Andamento</div>
+                        </div>
+                    </div>
+                    <div class="formacao-item">
+                        <div class="formacao-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="formacao-content">
+                            <div class="curso">Graduação em Sistemas de Informação</div>
+                            <div class="instituicao-periodo">UNEX · 2022 – 2025</div>
+                        </div>
+                    </div>
+                    <div class="formacao-item">
+                        <div class="formacao-icon">
+                            <i class="fa-solid fa-desktop"></i>
+                        </div>
+                        <div class="formacao-content">
+                            <div class="curso">Curso Profissionalizante de Web Designer</div>
+                            <div class="instituicao-periodo">Microlins · 2023–2024</div>
+                        </div>
+                    </div>
+                    <div class="formacao-item">
+                        <div class="formacao-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="formacao-content">
+                            <div class="curso">Graduação em Psicologia</div>
+                            <div class="instituicao-periodo">UNEX · 2019 – 2021 · cursado até o 6° semestre</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== EXPERIÊNCIAS ===== -->
+                <div class="info-block">
+                    <h4><i class="fa-solid fa-user-check"></i> Experiências</h4>
+                    <div class="experiencia-item">
+                        <div class="experiencia-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="experiencia-content">
+                            <div class="titulo">Marketing Digital · Bão Digital</div>
+                            <div class="empresa-periodo">2021 – 2022</div>
+                            <div class="descricao">Tradução para soluções digitais dentro de padrões visuais estabelecidos e implementação de informações em sites via WordPress para clientes externos, além de criação de conteúdo para redes sociais.</div>
+                        </div>
+                    </div>
+                    <div class="experiencia-item">
+                        <div class="experiencia-icon">
+                            <i class="fa-solid fa-file-code"></i>
+                        </div>
+                        <div class="experiencia-content">
+                            <div class="titulo">Estagiária em TI · Avatim</div>
+                            <div class="empresa-periodo">2024 – 2025</div>
+                            <div class="descricao">Atuação como ponte entre usuários e sistemas, realizando levantamento de necessidades, validação de fluxos e identificação de melhorias de usabilidade.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== ÁREAS DE INTERESSE ===== -->
+                <div class="info-block">
+                    <h4><i class="fas fa-heart"></i> Áreas de Interesse</h4>
+                    <div class="tags-list">
+                        <span class="tag-item"><i class="fas fa-chevron-right"></i> Design de Produtos Digitais</span>
+                        <span class="tag-item"><i class="fas fa-chevron-right"></i> Product Design</span>
+                        <span class="tag-item"><i class="fas fa-chevron-right"></i> Design Systems</span>
+                        <span class="tag-item"><i class="fas fa-chevron-right"></i> No-code & IA aplicada ao design</span>
+                        <span class="tag-item"><i class="fas fa-chevron-right"></i> Mobile Design</span>
+                    </div>
+                </div>
+
+                <!-- ===== SOFT SKILLS ===== -->
+                <div class="info-block">
+                    <h4><i class="fas fa-users"></i> Soft Skills</h4>
+                    <div class="tags-list">
+                        <span class="tag-item"><i class="fas fa-chevron-right"></i> Empatia</span>
+                        <span class="tag-item"><i class="fas fa-chevron-right"></i> Comunicação</span>
+                        <span class="tag-item"><i class="fas fa-chevron-right"></i> Resolução de Problemas</span>
+                        <span class="tag-item"><i class="fas fa-chevron-right"></i> Trabalho em Equipe</span>
+                        <span class="tag-item"><i class="fas fa-chevron-right"></i> Pensamento Crítico</span>
+                        <span class="tag-item"><i class="fas fa-chevron-right"></i> Adaptabilidade</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HABILIDADES E FERRAMENTAS ===== -->
+    <section class="habilidades section-padding" id="habilidades">
+        <div class="container">
+            <h2 class="section-title fade-up">Minhas <span class="highlight">Habilidades</span> e <span class="highlight">Ferramentas</span></h2>
+            <p class="section-subtitle fade-up">Processo, Design e Tecnologias.</p>
+
+            <div class="habilidades-grid">
+                <div class="habilidade-categoria fade-up delay-1">
+                    <h3><i class="fas fa-lightbulb"></i> UX</h3>
+                    <div class="habilidade-tags">
+                        <span class="habilidade-tag"><i class="fas fa-route"></i> Jornada do Usuário</span>
+                        <span class="habilidade-tag"><i class="fas fa-users"></i> Personas</span>
+                        <span class="habilidade-tag"><i class="fas fa-project-diagram"></i> User Flow</span>
+                        <span class="habilidade-tag"><i class="fas fa-border-all"></i> Wireframes</span>
+                        <span class="habilidade-tag"><i class="fas fa-sitemap"></i> Arquitetura da Informação</span>
+                    </div>
+                </div>
+
+                <div class="habilidade-categoria fade-up delay-2">
+                    <h3><i class="fas fa-palette"></i> UI</h3>
+                    <div class="habilidade-tags">
+                        <span class="habilidade-tag"><i class="fas fa-layer-group"></i> Design System</span>
+                        <span class="habilidade-tag"><i class="fas fa-arrows-alt-h"></i> Auto Layout</span>
+                        <span class="habilidade-tag"><i class="fas fa-code-branch"></i> Variáveis</span>
+                        <span class="habilidade-tag"><i class="fas fa-cubes"></i> Componentes</span>
+                        <span class="habilidade-tag"><i class="fas fa-play"></i> Prototipação</span>
+                        <span class="habilidade-tag"><i class="fas fa-mobile-alt"></i> Responsividade</span>
+                        <span class="habilidade-tag"><i class="fas fa-universal-access"></i> Acessibilidade</span>
+                        <span class="habilidade-tag"><i class="fas fa-check-circle"></i> Usabilidade</span>
+                    </div>
+                </div>
+
+                <div class="habilidade-categoria fade-up delay-3">
+                    <h3><i class="fas fa-tools"></i> Ferramentas</h3>
+                    <div class="habilidade-tags">
+                        <span class="habilidade-tag"><i class="fab fa-figma"></i> Figma</span>
+                        <span class="habilidade-tag"><i class="fas fa-pencil-ruler"></i> FigJam</span>
+                        <span class="habilidade-tag"><i class="fas fa-sticky-note"></i> Notion</span>
+                        <span class="habilidade-tag"><i class="fas fa-code"></i> HTML/CSS</span>
+                        <span class="habilidade-tag"><i class="fas fa-robot"></i> IA & No-code</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJETOS ===== -->
+    <section class="projetos section-padding" id="projetos">
+        <div class="container">
+            <h2 class="section-title fade-up">Meus <span class="highlight">Projetos</span></h2>
+            <p class="section-subtitle fade-up">Confira meus trabalhos até aqui.</p>
+
+            <div class="filtros fade-up" id="filtros" role="tablist" aria-label="Filtrar projetos por categoria">
+                <button class="filtro-btn active" data-filter="todos" role="tab" aria-selected="true">Todos</button>
+                <button class="filtro-btn" data-filter="ux-redesign" role="tab" aria-selected="false">UX Redesign</button>
+                <button class="filtro-btn" data-filter="landing-page" role="tab" aria-selected="false">Landing Pages</button>
+                <button class="filtro-btn" data-filter="aplicativo" role="tab" aria-selected="false">Aplicativo</button>
+                <button class="filtro-btn" data-filter="visualidentity" role="tab" aria-selected="false">Visual Identity</button>
+            </div>
+
+            <div class="projetos-grid" id="projetosGrid">
+                <!-- Card 1 - Skoob -->
+                <div class="projeto-card fade-up" data-categoria="ux-redesign">
+                    <div class="projeto-thumbnail">
+                        <span class="thumb-label">UX Redesign</span>
+                        <img src="assets/loginskoob.png" alt="Redesign Skoob - Login" />
+                    </div>
+                    <div class="projeto-info">
+                        <span class="categoria">UX Redesign</span>
+                        <h3>Skoob · Login</h3>
+                        <p>Redesign do fluxo de autenticação com foco em sessão persistente e login por biometria.</p>
+                        <button class="btn btn-outline-primary btn-sm" onclick="openCase(0)" aria-label="Ver case: Skoob · Login">
+                            <i class="fas fa-arrow-right"></i> Ver Case
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2 - Spotify -->
+                <div class="projeto-card fade-up" data-categoria="ux-redesign">
+                    <div class="projeto-thumbnail">
+                        <span class="thumb-label">UX Redesign</span>
+                        <img src="assets/spotify.png" alt="Redesign Spotify - Acervo" />
+                    </div>
+                    <div class="projeto-info">
+                        <span class="categoria">UX Redesign</span>
+                        <h3>Spotify · Acervo Pessoal</h3>
+                        <p>Proposta de funcionalidade para reprodução aleatória de todo o acervo pessoal do usuário.</p>
+                        <button class="btn btn-outline-primary btn-sm" onclick="openCase(1)" aria-label="Ver case: Spotify · Acervo Pessoal">
+                            <i class="fas fa-arrow-right"></i> Ver Case
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3 - Samsung -->
+                <div class="projeto-card fade-up" data-categoria="ux-redesign">
+                    <div class="projeto-thumbnail">
+                        <span class="thumb-label">UX Redesign</span>
+                        <img src="assets/bateria.png" alt="Redesign Samsung - Bateria" />
+                    </div>
+                    <div class="projeto-info">
+                        <span class="categoria">UX Redesign</span>
+                        <h3>Samsung · Informações da Bateria</h3>
+                        <p>Melhoria na exibição da porcentagem da bateria no menu suspenso Samsung.</p>
+                        <button class="btn btn-outline-primary btn-sm" onclick="openCase(2)" aria-label="Ver case: Samsung · Informações da Bateria">
+                            <i class="fas fa-arrow-right"></i> Ver Case
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4 - App Leitura -->
+                <div class="projeto-card fade-up" data-categoria="aplicativo">
+                    <div class="projeto-thumbnail">
+                        <span class="thumb-label">Aplicativo</span>
+                        <img src="assets/leiaute.png" alt="App Rastreamento de Leituras" />
+                    </div>
+                    <div class="projeto-info">
+                        <span class="categoria">Aplicativo</span>
+                        <h3>Leiaute</h3>
+                        <p>Aplicativo mobile projetado para ajudar leitores a registrar e acompanhar suas metas de leitura.</p>
+                        <button class="btn btn-outline-primary btn-sm" onclick="openCase(3)" aria-label="Ver case: Leiaute">
+                            <i class="fas fa-arrow-right"></i> Ver Case
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 5 - Mix Bombonas -->
+                <div class="projeto-card fade-up" data-categoria="landing-page">
+                    <div class="projeto-thumbnail">
+                        <span class="thumb-label">Landing Page</span>
+                        <img src="assets/mixbombonas.png" alt="Mix Bombonas" />
+                    </div>
+                    <div class="projeto-info">
+                        <span class="categoria">Landing Page</span>
+                        <h3>Mix Bombonas</h3>
+                        <p>Site institucional para venda de embalagens plásticas de grandes volumes (bombonas, tonéis e containers).</p>
+                        <button class="btn btn-outline-primary btn-sm" onclick="openCase(4)" aria-label="Ver case: Mix Bombonas">
+                            <i class="fas fa-arrow-right"></i> Ver Case
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 6 - Santtec -->
+                <div class="projeto-card fade-up" data-categoria="landing-page">
+                    <div class="projeto-thumbnail">
+                        <span class="thumb-label">Landing Page</span>
+                        <img src="assets/santtec.png" alt="Santtec Máquinas" />
+                    </div>
+                    <div class="projeto-info">
+                        <span class="categoria">Landing Page</span>
+                        <h3>Santtec Máquinas</h3>
+                        <p>Site institucional para locação de máquinas de sorvete e açaí.</p>
+                        <button class="btn btn-outline-primary btn-sm" onclick="openCase(5)" aria-label="Ver case: Santtec Máquinas">
+                            <i class="fas fa-arrow-right"></i> Ver Case
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 7 - Visual Identity -->
+                <div class="projeto-card fade-up" data-categoria="visualidentity">
+                    <div class="projeto-thumbnail">
+                        <span class="thumb-label">Visual Identity</span>
+                        <img src="assets/headerlogo.png" alt="Identidade Visual Pessoal" />
+                    </div>
+                    <div class="projeto-info">
+                        <span class="categoria">Visual Identity</span>
+                        <h3>Identidade Visual Pessoal</h3>
+                        <p>Criação da minha identidade visual, incluindo logomarca e paleta.</p>
+                        <button class="btn btn-outline-primary btn-sm" onclick="openCase(6)" aria-label="Ver case: Identidade Visual Pessoal">
+                            <i class="fas fa-arrow-right"></i> Ver Case
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 8 - Em Breve 1 -->
+                <div class="projeto-card fade-up" data-categoria="em-breve">
+                    <div class="projeto-thumbnail" style="background: linear-gradient(145deg, rgba(0,84,57,0.3), rgba(0,42,77,0.3)); display:flex; align-items:center; justify-content:center;">
+                        <span class="em-breve">Em Breve</span>
+                    </div>
+                    <div class="projeto-info">
+                        <span class="categoria">Novo Projeto</span>
+                        <h3>Em Desenvolvimento</h3>
+                        <p>Estou trabalhando em um novo projeto. Em breve mais novidades!</p>
+                    </div>
+                </div>
+
+                <!-- Card 9 - Em Breve 2 -->
+                <div class="projeto-card fade-up" data-categoria="em-breve">
+                    <div class="projeto-thumbnail" style="background: linear-gradient(145deg, rgba(0,84,57,0.3), rgba(0,42,77,0.3)); display:flex; align-items:center; justify-content:center;">
+                        <span class="em-breve">Em Breve</span>
+                    </div>
+                    <div class="projeto-info">
+                        <span class="categoria">Novo Projeto</span>
+                        <h3>Em Desenvolvimento</h3>
+                        <p>Estou trabalhando em um novo projeto. Em breve mais novidades!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTATO ===== -->
+    <section class="contato section-padding" id="contato">
+        <div class="container">
+            <h2 class="section-title fade-up">Entre em <span class="highlight">Contato</span></h2>
+            <p class="section-subtitle fade-up">Vamos conversar sobre design, projetos e oportunidades.</p>
+
+            <div class="contato-grid">
+                <div class="contato-info fade-up delay-1">
+                    <p>
+                        Estou sempre aberta a novas conexões e colaborações. Se você tem um projeto em mente, uma vaga interessante ou apenas quer trocar ideias sobre design, me envie uma mensagem!
+                    </p>
+                    <div class="contato-links">
+                        <a href="https://br.linkedin.com/in/paola-fagundes" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                        <a href="https://github.com/paolafms" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://shre.ink/Notion-Paola-Fagundes" target="_blank"><i class="fas fa-sticky-note"></i> Notion</a>
+                        <a href="http://lattes.cnpq.br/4374440977523926" target="_blank"><i class="fas fa-graduation-cap"></i> Currículo Lattes</a>
+                        <a href="https://wa.me/5573981054848?text=Olá! Vim através do seu site e gostaria de entrar em contato com você." target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="contato-form fade-up delay-2">
+                    <form id="contactForm" action="https://formspree.io/f/xojgjwzr" method="POST">
+                        <!-- honeypot anti-spam: bots preenchem, humanos não veem -->
+                        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="name" placeholder="Seu Nome" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="nome@email.com" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="message" placeholder="Fique à vontade para me mandar uma mensagem!" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                        </button>
+                        <div class="form-success" id="formSuccess">
+                            <i class="fas fa-check-circle"></i> Mensagem enviada com sucesso! Em breve retorno.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="assets/logo.png" alt="Paola Fagundes - logomarca" />
+                <span>Paola<span>Fagundes</span></span>
+            </div>
+            <p><i class="fa-regular fa-copyright" style="color: var(--primary);"></i> 2026 Paola Fagundes · UX/UI Designer</p>
+            <p><i class="fa-solid fa-location-dot" style="color: var(--primary);"></i> Itabuna (BA) - Brasil</p>
+            <p>
+                <a href="assets/Curriculo-Paola-Fagundes.pdf" target="_blank"><i class="fa-solid fa-file"></i> Visualizar Currículo</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ===== CASE OVERLAY ===== -->
+    <div class="case-overlay" id="caseOverlay" role="dialog" aria-modal="true" aria-label="Detalhes do projeto">
+        <div class="case-container">
+            <button class="case-close" id="caseClose" aria-label="Fechar projeto">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="caseContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // ===== DADOS DOS PROJETOS =====
+        const projectsData = [{
+            id: 0,
+            titulo: 'Redesign Skoob · Experiência de Login',
+            categoria: 'UX Redesign',
+            banner: 'assets/loginskoob.png',
+            sections: [
+                { title: 'Visão Geral', content: 'Este é um projeto conceitual desenvolvido para fins de estudo em UX/UI Design, realizado com o objetivo de melhorar a experiência de login no aplicativo Skoob, reduzindo a necessidade de autenticação repetida e tornando o acesso mais rápido e fluido para usuários recorrentes.' },
+                { title: 'Problema', content: 'Usuários do aplicativo Skoob relatam a necessidade frequente de inserir login e senha ao acessar o app, mesmo sendo usuários recorrentes. Essa repetição gera frustração, quebra o fluxo de uso e pode levar ao abandono temporário da plataforma.', image: 'feedbackusuarios.png' },
+                { title: 'Objetivo do Projeto', content: '• Simplificar o acesso ao aplicativo.<br>• Diminuir a necessidade de login repetido.<br>• Tornar a experiência mais fluida para usuários recorrentes.<br>• Alinhar o fluxo de login às expectativas atuais de usabilidade.' },
+                { title: 'Processo UX/UI', content: '1. Levantamento de relatos de usuários reais nas avaliações do app<br>2. Análise do fluxo de login atual identificando pontos de atrito<br>3. Referências através de aplicativos similares<br>4. Definição de solução baseada em sessão persistente e biometria<br>5. Criação de wireframes no Figma<br>6. Documentação do fluxo ideal em 4 telas' },
+                { title: 'Decisões de Design', content: 'A decisão de implementar uma sessão persistente foi baseada no comportamento esperado de usuários recorrentes, que priorizam rapidez e continuidade no acesso ao aplicativo. A inclusão de login por biometria visa reduzir o atrito no processo de autenticação, oferecendo uma alternativa mais ágil e alinhada aos padrões atuais de usabilidade em aplicativos mobile. A proposta também considera a importância da transparência, incluindo mensagens claras sobre o estado da sessão e momentos em que a reautenticação é necessária, reduzindo a incerteza e a frustração do usuário. Essas decisões foram pensadas para equilibrar segurança e usabilidade, garantindo uma experiência mais fluida sem comprometer a proteção dos dados do usuário.' },
+                { title: 'Análise do Fluxo Atual', content: 'Atualmente, o fluxo de login exige que o usuário insira e-mail e senha com frequência, mesmo após acessos anteriores. O aplicativo não deixa claro quando ou por que a sessão é encerrada, o que gera confusão e frustração.', image: 'skoobinicial.png' },
+                { title: 'Solução Proposta', content: 'A proposta de redesign foca em oferecer um acesso mais rápido e contínuo, mantendo a segurança e alinhando o fluxo às expectativas do usuário.' },
+                { title: 'Principais Melhorias', content: '• Sessão persistente para usuários recorrentes.<br>• Login rápido por biometria (digital ou reconhecimento facial).<br>• Opção de login com Google.<br>• Mensagens claras quando a reautenticação for necessária.' },
+                { title: 'Wireframes', content: 'Os wireframes foram desenvolvidos no Figma com foco na simplificação do acesso ao aplicativo. O fluxo prioriza usuários recorrentes, oferecendo opções de login rápido e sessão persistente, além de transparência nos casos em que a reautenticação é necessária.', image: 'loginskoob1.png', figma: 'https://www.figma.com/design/CrcIiNtiIxbcXUMRyPcjOP/Wireframes-%E2%80%93-Redesign-Login-Skoob?node-id=0-1&t=oxgrOa0MhTaYemQA-1' },
+                { title: 'Status do Projeto', content: 'Este projeto foi desenvolvido desde a análise do problema até a criação de wireframes, com aplicação de identidade visual e definição do fluxo ideal de login.' }
+            ]
+        }, {
+            id: 1,
+            titulo: 'Redesign Spotify · Reprodução Aleatória do Acervo',
+            categoria: 'UX Redesign',
+            banner: 'assets/spotify.png',
+            sections: [
+                { title: 'Visão Geral', content: 'Projeto conceitual desenvolvido para fins de estudo em UX/UI Design que explora a ausência de uma funcionalidade de reprodução aleatória que reúna todo o acervo pessoal do usuário no Spotify. A proposta busca reduzir o esforço de decisão em momentos de indecisão, permitindo que o usuário escute músicas de forma aleatória a partir de diferentes tipos de conteúdo que já salvou na plataforma.' },
+                { title: 'Problema', content: 'Atualmente, o Spotify não oferece uma opção de reprodução aleatória que englobe todo o acervo pessoal do usuário. A função de aleatório está limitada a contextos isolados, como uma playlist, um álbum ou as músicas curtidas. Em momentos em que o usuário não sabe exatamente o que ouvir, essa limitação exige uma decisão prévia e reduz a variedade de reprodução, dificultando a redescoberta de músicas.' },
+                { title: 'Objetivo do Projeto', content: '• Reduzir o esforço de escolha em momentos de indecisão<br>• Ampliar a variedade de reprodução<br>• Permitir a redescoberta de conteúdos já salvos<br>• Dar mais controle sobre o próprio acervo musical' },
+                { title: 'Processo UX/UI', content: '1. Identificação do problema a partir da experiência do usuário<br>2. Análise das opções atuais de reprodução no aplicativo<br>3. Definição do cenário de uso: "não sei o que ouvir agora"<br>4. Proposta de solução centrada no acervo pessoal do usuário<br>5. Criação de wireframes com identidade visual aplicada' },
+                { title: 'Decisões de Design', content: 'A decisão de centralizar a funcionalidade de reprodução aleatória na Biblioteca foi baseada no comportamento do usuário, já que esse é o principal espaço onde ele gerencia seus conteúdos. O uso de checkboxes permite maior controle sobre as fontes de reprodução, possibilitando uma experiência personalizada sem adicionar complexidade ao fluxo. Além disso, a proposta considera a redução de esforço cognitivo em momentos de indecisão, oferecendo uma solução direta e acessível. A estrutura da interação foi pensada para manter consistência com padrões já existentes no aplicativo, evitando atrito e facilitando a adoção da nova funcionalidade.' },
+                { title: 'Solução Proposta', content: 'Criação da funcionalidade **"Aleatório do meu acervo"**, acessível diretamente pela Biblioteca do usuário. A funcionalidade permite tocar músicas de forma aleatória a partir de diferentes fontes do acervo pessoal, reunidas em uma única experiência de reprodução.' },
+                { title: 'Principais Melhorias', content: '• Opção de reprodução aleatória abrangendo todo o acervo pessoal do usuário.<br>• Seleção personalizada por meio de checkboxes, permitindo ao usuário escolher quais tipos de conteúdo serão incluídos no aleatório, como: Músicas curtidas, Álbuns salvos, Playlists do usuário, Podcasts (opcional), Arquivos Locais<br>• Acesso direto à funcionalidade ao entrar na Biblioteca.<br>• Clareza sobre quais conteúdos estão incluídos na reprodução aleatória.<br>• Inteligência do sistema para evitar repetições, impedindo que músicas já organizadas em álbuns ou playlists selecionadas sejam tocadas novamente durante a reprodução aleatória.<br>• Maior autonomia e controle do usuário sobre a experiência de escuta.' },
+                { title: 'Wireframes', content: 'Os wireframes foram desenvolvidos no Figma e exploram a inserção da funcionalidade **"Aleatório do meu acervo"** diretamente na Biblioteca do Spotify, respeitando a hierarquia visual e o fluxo já conhecido pelos usuários. A solução propõe um acesso rápido à reprodução aleatória, acompanhado de um modal com checkboxes, permitindo que o usuário selecione quais tipos de conteúdo do seu acervo pessoal deseja incluir, como músicas curtidas, álbuns salvos, playlists, podcasts e arquivos locais.', image: 'spotify1.png', figma: 'https://www.figma.com/design/MwPjmQX6HWtx3PBgC7vme2/Wireframes-%E2%80%94-Reprodu%C3%A7%C3%A3o-aleat%C3%B3ria-do-acervo-pessoal-no-Spotify?m=auto&t=TzbZXzr4Fdw40C0P-1' },
+                { title: 'Status do Projeto', content: 'Projeto finalizado na etapa de wireframes, com foco em tomada de decisão, autonomia do usuário e redução da frustração em momentos de indecisão musical.' }
+            ]
+        }, {
+            id: 2,
+            titulo: 'Redesign Samsung · Exibição da Bateria',
+            categoria: 'UX Redesign',
+            banner: 'assets/bateria.png',
+            sections: [
+                { title: 'Visão Geral', content: 'Projeto conceitual desenvolvido para fins de estudo em UX/UI Design, com foco na melhoria da experiência de configuração da porcentagem da bateria em dispositivos Samsung. Este projeto é um estudo conceitual de UX Design que propõe uma alternativa à exibição constante da porcentagem da bateria na barra de status. A solução sugere que a porcentagem seja visível apenas no menu suspenso, permitindo acesso à informação quando necessário, sem exposição contínua.' },
+                { title: 'Problema', content: 'Atualmente, dispositivos Samsung permitem apenas ativar ou desativar a porcentagem da bateria diretamente no ícone da barra de status. Quando ativada, a informação fica visível o tempo todo, o que pode gerar ansiedade em usuários que acompanham constantemente o nível da bateria, levando a comportamentos como carregar o aparelho com frequência excessiva.', image: 'statuscel.png' },
+                { title: 'Ponto Importante', content: 'O sistema não oferece uma opção intermediária, onde o usuário possa: - Não ver a porcentagem o tempo todo. - Consultar a porcentagem apenas quando quiser.' },
+                { title: 'Contexto de Uso', content: 'Usuários frequentemente acessam o menu suspenso para consultar informações rápidas como conectividade, notificações e status do dispositivo. Neste contexto, a porcentagem da bateria é uma informação útil, mas não necessariamente precisa estar visível de forma contínua.' },
+                { title: 'Objetivo do Projeto', content: '• Permitir a visualização da porcentagem da bateria apenas no menu suspenso.<br>• Evitar a exposição constante da porcentagem na barra de status.<br>• Reduzir ansiedade relacionada ao monitoramento contínuo da bateria.<br>• Oferecer maior controle ao usuário sobre quando acessar essa informação.<br>• Promover uma experiência mais equilibrada e menos invasiva.' },
+                { title: 'Processo UX/UI', content: '1. Identificação do problema<br>2. Análise do comportamento atual do sistema<br>3. Compreensão do impacto no usuário<br>4. Definição da solução<br>5. Criação de wireframes' },
+                { title: 'Análise do Fluxo Atual', content: 'O sistema força o usuário a escolher entre duas opções extremas: ver a porcentagem da bateria o tempo todo ou não vê-la em nenhum momento. Essa limitação desconsidera diferentes perfis de uso e necessidades emocionais, especialmente de usuários que preferem consultar a informação apenas quando necessário.', image: 'comentarioscel.png' },
+                { title: 'Solução Proposta', content: 'A solução propõe acrescentar a opção de exibição da porcentagem da bateria no menu suspenso, mantendo o ícone da bateria na barra de status sem o valor numérico. Dessa forma, o usuário tem acesso à informação sob demanda, sem estímulo visual constante.' },
+                { title: 'Decisões de Design', content: 'A decisão de exibir a porcentagem da bateria apenas no menu suspenso foi baseada no comportamento já existente dos usuários, que acessam essa área para consultar informações rápidas do dispositivo. Manter o ícone da bateria na barra de status sem o valor numérico reduz o estímulo visual constante, ao mesmo tempo em que preserva o acesso rápido à informação quando necessário. Essa abordagem busca equilibrar usabilidade e conforto emocional, evitando a exposição contínua a uma informação que pode gerar ansiedade e comportamentos indesejados. A solução também foi pensada para se integrar ao sistema atual sem alterar o fluxo de navegação ou adicionar complexidade à experiência.' },
+                { title: 'Principais Melhorias', content: '• Porcentagem visível ao abrir o menu suspenso.<br>• Ícone da bateria na barra de status permanece sem números.<br>• Redução de estímulo visual contínuo.<br>• Maior controle do usuário sobre o acesso à informação.<br>• Nenhuma alteração na navegação ou funcionamento atual do sistema.' },
+                { title: 'Wireframes', content: 'Os wireframes foram desenvolvidos no Figma para demonstrar a solução proposta, onde a porcentagem é exibida apenas no menu suspenso. Essa abordagem permite que o usuário consulte a informação sob demanda, reduzindo a exposição constante e possíveis impactos no comportamento, como a ansiedade relacionada ao nível da bateria.', image: 'bateria1.png', figma: 'https://www.figma.com/design/vsSmTo997jAmt01oTv5Tsk/Wireframes-%E2%80%93-Porcentagem-da-bateria-no-menu-suspenso--Samsung-?node-id=1-97&t=VyIovASWr21i7iff-1' },
+                { title: 'Status do Projeto', content: 'Projeto finalizado na etapa de wireframes, com foco em experiência do usuário, controle de informação e bem-estar digital.' }
+            ]
+        }, {
+            id: 3,
+            titulo: 'App de Rastreamento de Leituras',
+            categoria: 'Aplicativo',
+            banner: 'assets/leiaute.png',
+            sections: [
+                { title: 'Visão Geral', content: 'Leiaute é um aplicativo mobile conceitual de rastreamento de leituras. O nome é um trocadilho entre "leia" e "layout", reforçando a identidade visual como parte da proposta do produto. O projeto foi desenvolvido com foco na construção de uma interface consistente e na aplicação de boas práticas de UX/UI, incluindo Design System, prototipagem avançada e handoff documentado.' },
+                { title: 'Problema', content: 'Usuários que acompanham leituras frequentemente utilizam diferentes ferramentas (anotações, apps genéricos ou memória), o que dificulta o controle do progresso e a organização das leituras. Esse cenário é comum entre leitores frequentes que consomem múltiplos livros simultaneamente e precisam de uma forma simples de acompanhar progresso e organização.' },
+                { title: 'Objetivo do Projeto', content: 'Criar uma interface mobile elegante e funcional para rastreamento de leituras, com foco em hierarquia visual clara, consistência de componentes e fluxo de navegação intuitivo. O projeto demonstra domínio de Design System, Variables com múltiplos modos, Components com Variants, prototipagem com overlays e handoff documentado no Figma.' },
+                { title: 'Processo UX/UI', content: 'O projeto seguiu um processo estruturado em quatro etapas. Primeiro foi construída a fundação no Design System, definição de paleta de cores via Variables, hierarquia tipográfica com Styles, e criação de componentes reutilizáveis (Botão/Primário com variants, Tag/Gênero e Card/Livro). A segunda etapa foi a expansão das telas. O projeto evoluiu de 5 para 7 telas: Abertura, Home, Detalhes (expandida com sinopse, avaliação por estrelas, barra de progresso e botão de status), Buscar, Estante (com filtros por status de leitura e grid de cards), Perfil (expandida com estatísticas, métricas e gêneros mais lidos) e Modal (adicionar à estante). A terceira etapa foi a documentação de handoff na página dedicada, com specs de cada elemento do Card/Livro nos 4 estados. A quarta etapa foi a prototipagem: navegação completa pela tab-bar com transição Dissolver · 300ms · Desaceleração progressiva, navegação de cards para tela Detalhes, seta de voltar funcional e modal de Adicionar à estante configurado como overlay.' },
+                { title: 'Decisões de Design', content: '• A tab-bar foi construída do zero com componente master no DS e instâncias em cada tela, garantindo consistência e manutenção centralizada.<br>• A tela Detalhes foi expandida para incluir sinopse, avaliação, barra de progresso e ação de adicionar à estante — tornando-a o centro de interação do fluxo.<br>• A tela Perfil absorveu as estatísticas do usuário, eliminando uma tela intermediária desnecessária e reduzindo fricção no fluxo.<br>• A variante Destaque do componente Tag/Gênero foi criada para destacar os gêneros mais lidos sem criar um novo componente, reforçando a escalabilidade do DS.<br>• A cor color/surface-elevated foi adicionada ao DS para diferenciar elementos sobrepostos (tab-bar, modal) do fundo principal, evitando confusão visual.' },
+                { title: 'Wireframes', content: 'O arquivo Figma contém quatro páginas: Design System com paleta, tipografia e componentes documentados; Telas com as 7 telas do fluxo principal; Handoff com specs e anotações do Card/Livro; e o protótipo navegável completo.', image: 'leiaute1.png', figma: 'https://www.figma.com/design/VE5cEeWEANhaRaw4Xd5R2o/Leiaute---App?node-id=20-24&t=Bk98HFlMwD0O17qf-1' },
+                { title: 'Status do Projeto', content: 'Projeto conceitual desenvolvido para prática de UX/UI Design. Ferramentas utilizadas: Figma (Variables, Components, Variants, Auto Layout e Prototipagem com Overlays).' }
+            ]
+        }, {
+            id: 4,
+            titulo: 'Mix Bombonas',
+            categoria: 'Landing Page',
+            banner: 'assets/mixbombonas.png',
+            sections: [
+                { title: 'Visão Geral', content: 'Cliente real do segmento de vendas de embalagens plásticas em Itabuna/BA. O objetivo foi criar uma presença digital que comunicasse o catálogo de produtos e convertesse visitantes em contato via WhatsApp.' },
+                { title: 'Problema', content: 'Mesmo sendo uma marca conhecida localmente, a loja não tinha presença digital. O único canal de comunicação era o WhatsApp, e os clientes chegavam mais por referência do que por buscas online (sem acesso aos produtos ou atendimento fora do expediente).' },
+                { title: 'Minha Atuação', content: '• Levantamento de necessidades do cliente (produtos e objetivo de negócio)<br>• Definição da arquitetura de informação e estrutura de seções<br>• Organização e hierarquia do conteúdo<br>• Decisões de fluxo de conversão (posicionamento dos CTAs de WhatsApp)<br>• Organização do catálogo de produtos<br>• Desenvolvimento executado com auxílio de ferramentas de IA' },
+                { title: 'Decisões de UX/UI', content: '• CTA de WhatsApp em múltiplos pontos da página para reduzir atrito no contato<br>• Seção "Versatilidade" para ampliar percepção de valor além do produto óbvio<br>• Estrutura mobile-first dado o perfil do público-alvo<br>• Paleta de cores alinhada à identidade da marca (verde, azul e branco)<br>• Layout de catálogo em grid para facilitar a comparação e navegação entre produtos' },
+                { title: 'Resultado', content: 'Site no ar em <a href="https://mixbombonas.com.br/" target="_blank" style="color: var(--primary); text-decoration: underline;">Mix Bombonas</a>. Cliente com presença digital ativa e canal de contato direto pelo WhatsApp integrado ao site.', image: 'mixbombonas1.png' }
+            ]
+        }, {
+            id: 5,
+            titulo: 'Santtec Máquinas',
+            categoria: 'Landing Page',
+            banner: 'assets/santtec.png',
+            sections: [
+                { title: 'Visão Geral', content: 'Cliente do segmento de locação de máquinas de açaí e sorvete, atuando em Goiás e DF. O objetivo foi criar uma landing page focada em conversão, comunicando o modelo de negócio de forma clara e direcionando leads para contato via WhatsApp.' },
+                { title: 'Problema', content: 'O cliente precisava de uma presença digital que explicasse um modelo de negócio pouco convencional (locação ao invés de compra) e quebrasse a objeção do custo alto de aquisição, tudo isso conduzindo o visitante rapidamente ao contato.' },
+                { title: 'Minha Atuação', content: '• Levantamento de necessidades do cliente (modelo de negócio, público-alvo, objeções comuns)<br>• Definição da arquitetura de informação e estrutura de seções<br>• Organização da hierarquia de conteúdo com foco em conversão<br>• Planejamento do fluxo de CTAs ao longo da página<br>• Organização das informações dos modelos (STR3B e STR5B)<br>• Estruturação da seção "Como Funciona" em 3 etapas para reduzir a carga cognitiva<br>• Desenvolvimento executado com auxílio de ferramentas de IA' },
+                { title: 'Decisões de UX/UI', content: '• CTA "Quero alugar agora" fixo no topo e repetido em múltiplos pontos para reduzir atrito no contato<br>• Comparativo visual de custo (compra R$48.000+ vs locação R$39,90/dia) logo no início para quebrar a principal objeção<br>• Seção "Por que a Santtec?" com cards de benefícios antes de mostrar os produtos — estabelece confiança antes de converter<br>• Seção "Em 3 passos" para simplificar o processo e reduzir hesitação do usuário<br>• Depoimento real com foto e cargo para reforço de credibilidade (prova social)<br>• Seção de parceiros com logos para validação institucional<br>• Especificações técnicas dos modelos organizadas em formato de tabela para facilitar comparação<br>• Paleta sóbria e tipografia direta alinhada ao posicionamento B2B do cliente' },
+                { title: 'Resultado', content: 'Site no ar em <a href="https://santtecmaquinas.com.br/" target="_blank" style="color: var(--primary); text-decoration: underline;">Santtec Máquinas</a>. Cliente com presença digital ativa, página focada em conversão e canal de contato direto via WhatsApp.', image: 'santtec1.png' }
+            ]
+        }, {
+            id: 6,
+            titulo: 'Identidade Visual Pessoal',
+            categoria: 'Visual Identity',
+            banner: 'assets/headerlogo.png',
+            sections: [
+                { title: 'Visão Geral', content: 'Criação da identidade visual pessoal como UX/UI Designer, incluindo logomarca, paleta de cores e tipografia para uso em perfis profissionais.' },
+                { title: 'Conceito', content: 'A logo une as iniciais "P" e "F" do nome Paola Fagundes de forma integrada. O "F" está contido dentro da barriga do P, e a cauda termina com um cursor de mouse com efeito de clique. A forma orgânica equilibra personalidade e profissionalismo, comunicando diretamente a área de atuação: UX/UI Design.' },
+                { title: 'Logomarca', content: '', image: 'headerlogo1.png' },
+                { title: 'Paleta de Cores', content: `
+                    <div class="cores-grid">
+                        <div class="cor-item">
+                            <div class="cor-preview" style="background: #1D9E75;"></div>
+                            <div class="cor-info">
+                                <span class="cor-nome">Verde teal</span>
+                                <span class="cor-hex">#1D9E75</span>
+                            </div>
+                        </div>
+                        <div class="cor-item">
+                            <div class="cor-preview" style="background: #2C5F8A;"></div>
+                            <div class="cor-info">
+                                <span class="cor-nome">Azul escuro</span>
+                                <span class="cor-hex">#2C5F8A</span>
+                            </div>
+                        </div>
+                        <div class="cor-item">
+                            <div class="cor-preview" style="background: #005439;"></div>
+                            <div class="cor-info">
+                                <span class="cor-nome">Fundo escuro 1</span>
+                                <span class="cor-hex">#005439</span>
+                            </div>
+                        </div>
+                        <div class="cor-item">
+                            <div class="cor-preview" style="background: #002A4D;"></div>
+                            <div class="cor-info">
+                                <span class="cor-nome">Fundo escuro 2</span>
+                                <span class="cor-hex">#002A4D</span>
+                            </div>
+                        </div>
+                        <div class="cor-item">
+                            <div class="cor-preview" style="background: #FFFFFF; border: 1px solid rgba(255,255,255,0.2);"></div>
+                            <div class="cor-info">
+                                <span class="cor-nome">Texto</span>
+                                <span class="cor-hex">#FFFFFF</span>
+                            </div>
+                        </div>
+                    </div>
+                ` },
+                { title: 'Tipografia', content: '<strong>Nunito:</strong><br>• Nome - Paola Fagundes · Branco · Tamanho (50) · Espaçamento entre Letras (3)<br>• Cargo - UX/UI Designer · Verde #1D9E75 · Tamanho (22) · Espaçamento entre Letras (3)' },
+                { title: 'Ferramentas', content: 'Figma · Canva' }
+            ]
+        }];
+
+        // ===== FUNÇÕES DO CASE =====
+        function openCase(index) {
+            const data = projectsData[index];
+            const overlay = document.getElementById('caseOverlay');
+            const content = document.getElementById('caseContent');
+
+            let sectionsHtml = '';
+            data.sections.forEach(section => {
+                let contentHtml = section.content;
+                
+                if (section.image) {
+                    contentHtml += `<div style="margin-top: 12px;"><img src="assets/${section.image}" alt="${section.title} - ${data.titulo}" style="width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);" /></div>`;
+                }
+                
+                if (section.figma) {
+                    contentHtml += `<div style="margin-top: 12px;"><a href="${section.figma}" target="_blank" class="figma-link"><i class="fab fa-figma"></i> Ver no Figma</a></div>`;
+                }
+
+                sectionsHtml += `
+                    <div>
+                        <h4>${section.title}</h4>
+                        <div>${contentHtml}</div>
+                    </div>
+                `;
+            });
+
+            content.innerHTML = `
+                <div class="case-banner">
+                    <img src="${data.banner}" alt="${data.titulo}" />
+                </div>
+                <div class="case-header">
+                    <h2>${data.titulo}</h2>
+                    <div class="case-meta">
+                        <span><i class="fas fa-tag"></i> ${data.categoria}</span>
+                        <span><i class="fas fa-tools"></i> Ferramentas: ${data.categoria === 'Visual Identity' ? 'Figma | Canva' : 'Figma'}</span>
+                        <span><i class="fas fa-user"></i> UX/UI Designer</span>
+                    </div>
+                </div>
+                <div class="case-body">
+                    ${sectionsHtml}
+                </div>
+            `;
+
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            overlay.scrollTop = 0;
+        }
+
+        function closeCase() {
+            document.getElementById('caseOverlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('caseClose').addEventListener('click', closeCase);
+        document.getElementById('caseOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeCase();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeCase();
+        });
+
+        // ===== FILTROS =====
+        const filterBtns = document.querySelectorAll('.filtro-btn');
+        const projectsGrid = document.getElementById('projetosGrid');
+        const projectCards = projectsGrid.querySelectorAll('.projeto-card');
+        let filterTimeout = null;
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+
+                const filter = this.dataset.filter;
+
+                if (filterTimeout) clearTimeout(filterTimeout);
+
+                // Passo 1: tudo some
+                projectCards.forEach(card => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.95)';
+                });
+
+                // Passo 2: após fade-out, reorganiza o grid
+                filterTimeout = setTimeout(() => {
+                    projectCards.forEach(card => {
+                        const categoria = card.dataset.categoria;
+                        card.style.display = (filter === 'todos' || categoria === filter) ? '' : 'none';
+                    });
+
+                    // Passo 3: os cards certos aparecem
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            projectCards.forEach(card => {
+                                if (card.style.display !== 'none') {
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'scale(1)';
+                                }
+                            });
+                        });
+                    });
+                }, 300);
+            });
+        });
+
+        // ===== NAV TOGGLE =====
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+        const navLinksItems = navLinks.querySelectorAll('a');
+        let menuWasOpen = false;
+
+        function toggleMenu(open) {
+            const isOpen = open !== undefined ? open : navLinks.classList.contains('open');
+            
+            if (open === false || (open === undefined && isOpen)) {
+                navLinks.classList.remove('open');
+                navOverlay.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navToggle.classList.remove('active');
+                document.body.style.overflow = '';
+                menuWasOpen = false;
+            } else {
+                navLinks.classList.add('open');
+                navOverlay.classList.add('active');
+                navToggle.setAttribute('aria-expanded', 'true');
+                navToggle.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                if (!menuWasOpen) {
+                    history.pushState(null, null, window.location.href);
+                    menuWasOpen = true;
+                }
+            }
+        }
+
+        navToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = navLinks.classList.contains('open');
+            toggleMenu(!isOpen);
+        });
+
+        navOverlay.addEventListener('click', function() {
+            toggleMenu(false);
+        });
+
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', function() {
+                toggleMenu(false);
+            });
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+                toggleMenu(false);
+            }
+        });
+
+        window.addEventListener('popstate', function() {
+            if (navLinks.classList.contains('open')) {
+                toggleMenu(false);
+            }
+            menuWasOpen = false;
+        });
+
+        // ===== TRADUTOR BR | EN =====
+        const langBtns = document.querySelectorAll('.lang-toggle, .lang-btn-mobile');
+        let isEN = false;
+
+        function handleLangToggle() {
+            isEN = !isEN;
+            langBtns.forEach(btn => btn.classList.toggle('en', isEN));
+
+            if (isEN) {
+                const select = document.querySelector('.goog-te-combo');
+                if (select) {
+                    select.value = 'en';
+                    select.dispatchEvent(new Event('change'));
+                }
+            } else {
+                document.cookie = 'googtrans=; path=/';
+                document.cookie = 'googtrans=; path=/; domain=.' + location.hostname;
+                location.reload();
+            }
+        }
+
+        langBtns.forEach(btn => btn.addEventListener('click', handleLangToggle));
+
+        // ===== BACK TO TOP =====
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ===== SCROLL ANIMATIONS =====
+        const fadeElements = document.querySelectorAll('.fade-up');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // ===== FORMULÁRIO =====
+        const form = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            try {
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: new FormData(this),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    formSuccess.classList.add('show');
+                    this.reset();
+                    setTimeout(() => {
+                        formSuccess.classList.remove('show');
+                    }, 5000);
+                } else {
+                    alert('Ops! Ocorreu um erro. Tente novamente ou envie um email diretamente.');
+                }
+            } catch (error) {
+                alert('Ops! Ocorreu um erro. Tente novamente ou envie um email diretamente.');
+            }
+        });
+    </script>
+
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'pt',
+                includedLanguages: 'en',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
