@@ -1775,6 +1775,21 @@
         }
 
         @media (max-width: 768px) {
+            .filtros {
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                padding-bottom: 4px;
+            }
+            .filtros::-webkit-scrollbar { display: none; }
+            .filtro-btn {
+                white-space: nowrap;
+                flex-shrink: 0;
+                padding: 8px 18px;
+                font-size: 0.85rem;
+            }
+
             #langToggle { display: none; }
 
             .lang-mobile-item { display: flex; justify-content: center; }
@@ -2211,7 +2226,7 @@
                 <li><a href="#projetos" class="nav-link">Projetos</a></li>
                 <li><a href="#contato" class="nav-link">Contato</a></li>
                 <li>
-                    <a href="assets/Curriculo-Paola-Fagundes.pdf" class="btn btn-primary btn-sm" target="_blank">
+                    <a href="assets/Curriculo-Paola-Fagundes.pdf" class="btn btn-primary btn-sm cv-link" target="_blank">
                         <i class="fa-solid fa-file"></i> Currículo
                     </a>
                 </li>
@@ -2251,7 +2266,7 @@
                     <a href="#projetos" class="btn btn-primary">
                         <i class="fas fa-arrow-right"></i> Ver Projetos
                     </a>
-                    <a href="assets/Curriculo-Paola-Fagundes.pdf" class="btn btn-secondary" target="_blank">
+                    <a href="assets/Curriculo-Paola-Fagundes.pdf" class="btn btn-secondary cv-link" target="_blank">
                         <i class="fa-solid fa-file"></i> Currículo
                     </a>
                 </div>
@@ -2645,7 +2660,7 @@
             <p><i class="fa-regular fa-copyright" style="color: var(--primary);"></i> 2026 Paola Fagundes · UX/UI Designer</p>
             <p><i class="fa-solid fa-location-dot" style="color: var(--primary);"></i> Itabuna (BA) - Brasil</p>
             <p>
-                <a href="assets/Curriculo-Paola-Fagundes.pdf" target="_blank"><i class="fa-solid fa-file"></i> Visualizar Currículo</a>
+                <a href="assets/Curriculo-Paola-Fagundes.pdf" class="cv-link" target="_blank"><i class="fa-solid fa-file"></i> Visualizar Currículo</a>
             </p>
         </div>
     </footer>
@@ -2695,9 +2710,9 @@
                 { title: 'Objetivo do Projeto', content: '• Reduzir o esforço de escolha em momentos de indecisão<br>• Ampliar a variedade de reprodução<br>• Permitir a redescoberta de conteúdos já salvos<br>• Dar mais controle sobre o próprio acervo musical' },
                 { title: 'Processo UX/UI', content: '1. Identificação do problema a partir da experiência do usuário<br>2. Análise das opções atuais de reprodução no aplicativo<br>3. Definição do cenário de uso: "não sei o que ouvir agora"<br>4. Proposta de solução centrada no acervo pessoal do usuário<br>5. Criação de wireframes com identidade visual aplicada' },
                 { title: 'Decisões de Design', content: 'A decisão de centralizar a funcionalidade de reprodução aleatória na Biblioteca foi baseada no comportamento do usuário, já que esse é o principal espaço onde ele gerencia seus conteúdos. O uso de checkboxes permite maior controle sobre as fontes de reprodução, possibilitando uma experiência personalizada sem adicionar complexidade ao fluxo. Além disso, a proposta considera a redução de esforço cognitivo em momentos de indecisão, oferecendo uma solução direta e acessível. A estrutura da interação foi pensada para manter consistência com padrões já existentes no aplicativo, evitando atrito e facilitando a adoção da nova funcionalidade.' },
-                { title: 'Solução Proposta', content: 'Criação da funcionalidade **"Aleatório do meu acervo"**, acessível diretamente pela Biblioteca do usuário. A funcionalidade permite tocar músicas de forma aleatória a partir de diferentes fontes do acervo pessoal, reunidas em uma única experiência de reprodução.' },
+                { title: 'Solução Proposta', content: 'Criação da funcionalidade "Aleatório do meu acervo", acessível diretamente pela Biblioteca do usuário. A funcionalidade permite tocar músicas de forma aleatória a partir de diferentes fontes do acervo pessoal, reunidas em uma única experiência de reprodução.' },
                 { title: 'Principais Melhorias', content: '• Opção de reprodução aleatória abrangendo todo o acervo pessoal do usuário.<br>• Seleção personalizada por meio de checkboxes, permitindo ao usuário escolher quais tipos de conteúdo serão incluídos no aleatório, como: Músicas curtidas, Álbuns salvos, Playlists do usuário, Podcasts (opcional), Arquivos Locais<br>• Acesso direto à funcionalidade ao entrar na Biblioteca.<br>• Clareza sobre quais conteúdos estão incluídos na reprodução aleatória.<br>• Inteligência do sistema para evitar repetições, impedindo que músicas já organizadas em álbuns ou playlists selecionadas sejam tocadas novamente durante a reprodução aleatória.<br>• Maior autonomia e controle do usuário sobre a experiência de escuta.' },
-                { title: 'Wireframes', content: 'Os wireframes foram desenvolvidos no Figma e exploram a inserção da funcionalidade **"Aleatório do meu acervo"** diretamente na Biblioteca do Spotify, respeitando a hierarquia visual e o fluxo já conhecido pelos usuários. A solução propõe um acesso rápido à reprodução aleatória, acompanhado de um modal com checkboxes, permitindo que o usuário selecione quais tipos de conteúdo do seu acervo pessoal deseja incluir, como músicas curtidas, álbuns salvos, playlists, podcasts e arquivos locais.', image: 'spotify1.png', figma: 'https://www.figma.com/design/MwPjmQX6HWtx3PBgC7vme2/Wireframes-%E2%80%94-Reprodu%C3%A7%C3%A3o-aleat%C3%B3ria-do-acervo-pessoal-no-Spotify?m=auto&t=TzbZXzr4Fdw40C0P-1' },
+                { title: 'Wireframes', content: 'Os wireframes foram desenvolvidos no Figma e exploram a inserção da funcionalidade "Aleatório do meu acervo" diretamente na Biblioteca do Spotify, respeitando a hierarquia visual e o fluxo já conhecido pelos usuários. A solução propõe um acesso rápido à reprodução aleatória, acompanhado de um modal com checkboxes, permitindo que o usuário selecione quais tipos de conteúdo do seu acervo pessoal deseja incluir, como músicas curtidas, álbuns salvos, playlists, podcasts e arquivos locais.', image: 'spotify1.png', figma: 'https://www.figma.com/design/MwPjmQX6HWtx3PBgC7vme2/Wireframes-%E2%80%94-Reprodu%C3%A7%C3%A3o-aleat%C3%B3ria-do-acervo-pessoal-no-Spotify?m=auto&t=TzbZXzr4Fdw40C0P-1' },
                 { title: 'Status do Projeto', content: 'Projeto finalizado na etapa de wireframes, com foco em tomada de decisão, autonomia do usuário e redução da frustração em momentos de indecisão musical.' }
             ]
         }, {
@@ -2986,6 +3001,13 @@
         function handleLangToggle() {
             isEN = !isEN;
             langBtns.forEach(btn => btn.classList.toggle('en', isEN));
+
+            const cvLinks = document.querySelectorAll('.cv-link');
+            const cvPT = 'assets/Curriculo-Paola-Fagundes.pdf';
+            const cvEN = 'assets/Curriculum-Paola-Fagundes-English.pdf';
+            cvLinks.forEach(link => link.href = isEN ? cvEN : cvPT);
+
+            toggleMenu(false);
 
             if (isEN) {
                 const select = document.querySelector('.goog-te-combo');
