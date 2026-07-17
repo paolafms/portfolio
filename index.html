@@ -2825,27 +2825,165 @@
             ]
         }];
 
+        // ===== EN TRANSLATIONS =====
+        const projectsDataEN = [{
+            tituloEN: 'Skoob Redesign · Login Experience',
+            categoriaEN: 'UX Redesign',
+            sections: [
+                { titleEN: 'Overview', contentEN: 'This is a conceptual project developed for UX/UI Design study purposes, aimed at improving the login experience on the Skoob app, reducing the need for repeated authentication and making access faster and smoother for returning users.' },
+                { titleEN: 'Problem', contentEN: 'Skoob app users report having to enter their login and password frequently, even as returning users. This repetition creates frustration, disrupts the user flow and can lead to temporary disengagement from the platform.' },
+                { titleEN: 'Project Goal', contentEN: '• Simplify app access.<br>• Reduce repeated login requirements.<br>• Create a smoother experience for returning users.<br>• Align the login flow with current usability standards.' },
+                { titleEN: 'UX/UI Process', contentEN: '1. Collection of real user reports from app reviews<br>2. Analysis of the current login flow to identify friction points<br>3. References from similar apps<br>4. Solution based on persistent session and biometrics<br>5. Wireframe creation in Figma<br>6. Documentation of the ideal flow across 4 screens' },
+                { titleEN: 'Design Decisions', contentEN: 'The decision to implement a persistent session was based on the expected behavior of returning users, who prioritize quick and continuous access. Biometric login was included to reduce friction in the authentication process, offering a faster alternative aligned with current mobile usability standards. The proposal also considers transparency, with clear messages about the session state and moments when re-authentication is required, reducing uncertainty and user frustration. These decisions were made to balance security and usability, ensuring a smoother experience without compromising user data protection.' },
+                { titleEN: 'Current Flow Analysis', contentEN: 'Currently, the login flow requires users to enter their email and password frequently, even after previous logins. The app does not clearly communicate when or why the session ends, which creates confusion and frustration.' },
+                { titleEN: 'Proposed Solution', contentEN: 'The redesign proposal focuses on offering faster and continuous access, maintaining security and aligning the flow with user expectations.' },
+                { titleEN: 'Key Improvements', contentEN: '• Persistent session for returning users.<br>• Quick login via biometrics (fingerprint or facial recognition).<br>• Google login option.<br>• Clear messages when re-authentication is required.' },
+                { titleEN: 'Wireframes', contentEN: 'Wireframes were developed in Figma focusing on simplifying app access. The flow prioritizes returning users, offering quick login options and persistent sessions, as well as transparency in cases where re-authentication is required.' },
+                { titleEN: 'Project Status', contentEN: 'This project was developed from problem analysis through wireframe creation, with visual identity application and definition of the ideal login flow.' }
+            ]
+        }, {
+            tituloEN: 'Spotify Redesign · Random Library Playback',
+            categoriaEN: 'UX Redesign',
+            sections: [
+                { titleEN: 'Overview', contentEN: 'A conceptual project developed for UX/UI Design study that explores the absence of a shuffle playback feature covering the user&#39;s entire personal library on Spotify. The proposal aims to reduce decision effort in moments of indecision, allowing users to listen to music randomly from different types of content they&#39;ve already saved.' },
+                { titleEN: 'Problem', contentEN: 'Currently, Spotify does not offer a shuffle option covering the user&#39;s full personal library. The shuffle feature is limited to isolated contexts, such as a playlist, album, or liked songs. When users don&#39;t know what to listen to, this limitation requires a prior choice and reduces playback variety, making it harder to rediscover music.' },
+                { titleEN: 'Project Goal', contentEN: '• Reduce decision effort in moments of indecision<br>• Expand playback variety<br>• Enable rediscovery of already-saved content<br>• Give users more control over their music library' },
+                { titleEN: 'UX/UI Process', contentEN: '1. Problem identification from user experience<br>2. Analysis of current playback options in the app<br>3. Use case definition: "I don&#39;t know what to listen to right now"<br>4. Solution proposal centered on the user&#39;s personal library<br>5. Wireframe creation with visual identity applied' },
+                { titleEN: 'Design Decisions', contentEN: 'The decision to center the shuffle feature in the Library was based on user behavior, as this is the main space where they manage their content. Checkboxes allow greater control over playback sources, enabling a personalized experience without adding complexity to the flow. The proposal also considers reducing cognitive effort in moments of indecision, offering a direct and accessible solution. The interaction structure was designed to maintain consistency with existing app patterns, avoiding friction and making the new feature easy to adopt.' },
+                { titleEN: 'Proposed Solution', contentEN: 'Creation of the "Shuffle my library" feature, accessible directly from the user&#39;s Library. It allows playing music randomly from different personal library sources in a single playback experience.' },
+                { titleEN: 'Key Improvements', contentEN: '• Shuffle option covering the user&#39;s entire personal library.<br>• Custom selection via checkboxes, letting users choose content types: Liked Songs, Saved Albums, User Playlists, Podcasts (optional), Local Files<br>• Direct access to the feature from the Library.<br>• Clarity on which content is included in shuffle playback.<br>• Smart deduplication to prevent repeats from overlapping sources.<br>• Greater user autonomy over the listening experience.' },
+                { titleEN: 'Wireframes', contentEN: 'Wireframes were developed in Figma, exploring the "Shuffle my library" feature directly in the Spotify Library, respecting existing visual hierarchy and user flow. The solution proposes quick access to shuffle with a modal and checkboxes for selecting content types.' },
+                { titleEN: 'Project Status', contentEN: 'Project completed at the wireframe stage, focused on decision-making, user autonomy, and reducing frustration in moments of musical indecision.' }
+            ]
+        }, {
+            tituloEN: 'Samsung Redesign · Battery Display',
+            categoriaEN: 'UX Redesign',
+            sections: [
+                { titleEN: 'Overview', contentEN: 'A conceptual UX/UI Design study project focused on improving the battery percentage display experience on Samsung devices. It proposes an alternative to always-on percentage display in the status bar, suggesting it be visible only in the pull-down menu, giving users on-demand access without constant visual stimulus.' },
+                { titleEN: 'Problem', contentEN: 'Currently, Samsung devices only allow enabling or disabling the battery percentage icon in the status bar. When enabled, the information is always visible, which can cause anxiety in users who constantly monitor battery levels, leading to frequent unnecessary charging.' },
+                { titleEN: 'Important Note', contentEN: 'The system offers no middle ground — users can&#39;t: - Hide the percentage from the status bar. - Check it on demand when needed.' },
+                { titleEN: 'Usage Context', contentEN: 'Users frequently open the pull-down menu to check quick information like connectivity, notifications, and device status. In this context, the battery percentage is useful, but doesn&#39;t need to be constantly visible.' },
+                { titleEN: 'Project Goal', contentEN: '• Allow battery percentage to be viewed only in the pull-down menu.<br>• Avoid constant exposure of the percentage in the status bar.<br>• Reduce anxiety related to continuous battery monitoring.<br>• Give users more control over when to access that information.<br>• Promote a more balanced and less intrusive experience.' },
+                { titleEN: 'UX/UI Process', contentEN: '1. Problem identification<br>2. Analysis of current system behavior<br>3. Understanding user impact<br>4. Solution definition<br>5. Wireframe creation' },
+                { titleEN: 'Current Flow Analysis', contentEN: 'The system forces users to choose between two extremes: always show or never show the battery percentage. This limitation ignores different usage profiles and emotional needs, especially for users who prefer to check the information only when necessary.' },
+                { titleEN: 'Proposed Solution', contentEN: 'The solution adds a battery percentage display option in the pull-down menu, keeping the battery icon in the status bar without the numeric value. This way, users can access the information on demand, without constant visual stimulus.' },
+                { titleEN: 'Design Decisions', contentEN: 'The decision to show the battery percentage only in the pull-down menu was based on existing user behavior — they already access this area to check quick device information. Keeping the battery icon in the status bar without the numeric value reduces constant visual stimulus while preserving quick access when needed. This approach balances usability and emotional comfort, avoiding continuous exposure to information that can cause anxiety. The solution was also designed to integrate with the current system without changing the navigation flow or adding complexity.' },
+                { titleEN: 'Key Improvements', contentEN: '• Percentage visible when opening the pull-down menu.<br>• Battery icon in the status bar remains without numbers.<br>• Reduced continuous visual stimulus.<br>• Greater user control over information access.<br>• No changes to the current navigation or system behavior.' },
+                { titleEN: 'Wireframes', contentEN: 'Wireframes were developed in Figma to demonstrate the proposed solution, where the percentage is shown only in the pull-down menu. This approach lets users check the information on demand, reducing constant exposure and potential behavioral impacts such as battery-related anxiety.' },
+                { titleEN: 'Project Status', contentEN: 'Project completed at the wireframe stage, focused on user experience, information control, and digital well-being.' }
+            ]
+        }, {
+            tituloEN: 'Leiaute · Reading Tracker App',
+            categoriaEN: 'App',
+            sections: [
+                { titleEN: 'Overview', contentEN: 'Leiaute is a conceptual mobile reading tracker app. The name is a wordplay on the Portuguese word "leia" (read) and "layout," reinforcing visual identity as part of the product concept. The project was developed focused on building a consistent interface using best UX/UI practices, including a Design System, advanced prototyping, and documented handoff.' },
+                { titleEN: 'Problem', contentEN: 'Users who track their reading often use different tools (notes, generic apps, or memory), which makes it hard to monitor progress and stay organized. This is common among frequent readers consuming multiple books simultaneously who need a simple way to track progress.' },
+                { titleEN: 'Project Goal', contentEN: 'Create an elegant and functional mobile interface for reading tracking, focused on clear visual hierarchy, component consistency, and intuitive navigation flow. The project demonstrates mastery of Design Systems, Variables with multiple modes, Components with Variants, overlay prototyping, and documented Figma handoff.' },
+                { titleEN: 'UX/UI Process', contentEN: 'The project followed a structured four-step process. First, the Design System foundation was built: color palette via Variables, typographic hierarchy with Styles, and reusable components (Button/Primary with variants, Tag/Genre, Book/Card). The second step was screen expansion — from 5 to 7 screens: Splash, Home, Details (with synopsis, star rating, progress bar, and status button), Search, Shelf (with reading status filters and card grid), Profile (with stats, metrics, and most-read genres), and a Modal (add to shelf). The third step was handoff documentation with specs for the Book/Card in all 4 states. The fourth step was prototyping: full tab-bar navigation with Dissolve transition · 300ms · Ease Out, card-to-Details navigation, working back arrow, and Add to Shelf modal as overlay.' },
+                { titleEN: 'Design Decisions', contentEN: '• The tab-bar was built from scratch with a master component in the DS and instances in each screen, ensuring consistency and centralized maintenance.<br>• The Details screen was expanded to include synopsis, rating, progress bar, and add-to-shelf action — making it the main interaction hub.<br>• The Profile screen absorbed user stats, eliminating an unnecessary intermediate screen and reducing flow friction.<br>• The Highlight variant of Tag/Genre was created to highlight the most-read genres without adding a new component, reinforcing DS scalability.<br>• The color/surface-elevated token was added to the DS to differentiate elevated elements (tab-bar, modal) from the main background.' },
+                { titleEN: 'Wireframes', contentEN: 'The Figma file has four pages: Design System with palette, typography, and documented components; Screens with the 7 main flow screens; Handoff with specs and annotations for Book/Card; and the full navigable prototype.' },
+                { titleEN: 'Project Status', contentEN: 'Conceptual project developed for UX/UI Design practice. Tools used: Figma (Variables, Components, Variants, Auto Layout, and Prototyping with Overlays).' }
+            ]
+        }, {
+            tituloEN: 'Mix Bombonas',
+            categoriaEN: 'Landing Page',
+            sections: [
+                { titleEN: 'Overview', contentEN: 'Real client in the plastic packaging sales segment in Itabuna, Brazil. The goal was to create a digital presence that communicated the product catalog and converted visitors into WhatsApp contacts.' },
+                { titleEN: 'Problem', contentEN: 'Despite being a well-known local brand, the store had no digital presence. The only communication channel was WhatsApp, and customers arrived mostly through referrals rather than online searches — with no access to products or service outside business hours.' },
+                { titleEN: 'My Role', contentEN: '• Client needs assessment (products and business goal)<br>• Information architecture and section structure definition<br>• Content organization and hierarchy<br>• Conversion flow decisions (CTA placement)<br>• Product catalog organization<br>• Development executed with AI assistance' },
+                { titleEN: 'UX/UI Decisions', contentEN: '• WhatsApp CTAs at multiple points on the page to reduce contact friction<br>• "Versatility" section to expand perceived value beyond the obvious product<br>• Mobile-first structure given the target audience profile<br>• Color palette aligned with brand identity (green, blue, and white)<br>• Grid catalog layout to facilitate product comparison and navigation' },
+                { titleEN: 'Result', contentEN: 'Live at <a href="https://mixbombonas.com.br/" target="_blank" style="color: var(--primary); text-decoration: underline;">Mix Bombonas</a>. Client with active digital presence and direct WhatsApp contact integrated into the site.' }
+            ]
+        }, {
+            tituloEN: 'Santtec Máquinas',
+            categoriaEN: 'Landing Page',
+            sections: [
+                { titleEN: 'Overview', contentEN: 'Real client in the açaí and soft serve machine rental segment, operating in Goiás and the Federal District. The goal was to create a conversion-focused landing page that clearly communicated the business model and directed leads to contact via WhatsApp.' },
+                { titleEN: 'Problem', contentEN: 'The client needed a digital presence to explain an unconventional business model (renting instead of buying) and overcome the high acquisition cost objection — all while driving visitors quickly to contact.' },
+                { titleEN: 'My Role', contentEN: '• Client needs assessment (business model, target audience, common objections)<br>• Information architecture and section structure definition<br>• Content hierarchy organization focused on conversion<br>• CTA flow planning throughout the page<br>• Machine model information organization (STR3B and STR5B)<br>• "How It Works" section structured in 3 steps to reduce cognitive load<br>• Development executed with AI assistance' },
+                { titleEN: 'UX/UI Decisions', contentEN: '• Fixed "I want to rent now" CTA at the top and repeated at multiple points to reduce contact friction<br>• Visual cost comparison (purchase R$48,000+ vs rental R$39.90/day) early on the page to tackle the main objection<br>• "Why Santtec?" section with benefit cards before showing products — builds trust before converting<br>• "In 3 steps" section to simplify the process and reduce user hesitation<br>• Real testimonial with photo and role for credibility (social proof)<br>• Partner section with logos for institutional validation<br>• Machine specs organized in a comparison table for easy side-by-side review<br>• Clean typography and sober palette aligned with the client&#39;s B2B positioning' },
+                { titleEN: 'Result', contentEN: 'Live at <a href="https://santtecmaquinas.com.br/" target="_blank" style="color: var(--primary); text-decoration: underline;">Santtec Máquinas</a>. Client with active digital presence, conversion-focused page, and direct WhatsApp contact.' }
+            ]
+        }, {
+            tituloEN: 'Personal Visual Identity',
+            categoriaEN: 'Visual Identity',
+            sections: [
+                { titleEN: 'Overview', contentEN: 'Creation of a personal visual identity as a UX/UI Designer, including logo, color palette, and typography for use across professional profiles.' },
+                { titleEN: 'Concept', contentEN: 'The logo combines the initials "P" and "F" from Paola Fagundes in an integrated way. The "F" is contained inside the belly of the "P," and the tail ends with a mouse cursor with a click effect. The organic shape balances personality and professionalism, directly communicating the area of expertise: UX/UI Design.' },
+                { titleEN: 'Logo', contentEN: '' },
+                { titleEN: 'Color Palette', contentEN: `
+                    <div class="cores-grid">
+                        <div class="cor-item">
+                            <div class="cor-preview" style="background: #1D9E75;"></div>
+                            <div class="cor-info">
+                                <span class="cor-nome">Teal Green</span>
+                                <span class="cor-hex">#1D9E75</span>
+                            </div>
+                        </div>
+                        <div class="cor-item">
+                            <div class="cor-preview" style="background: #2C5F8A;"></div>
+                            <div class="cor-info">
+                                <span class="cor-nome">Dark Blue</span>
+                                <span class="cor-hex">#2C5F8A</span>
+                            </div>
+                        </div>
+                        <div class="cor-item">
+                            <div class="cor-preview" style="background: #005439;"></div>
+                            <div class="cor-info">
+                                <span class="cor-nome">Dark Background 1</span>
+                                <span class="cor-hex">#005439</span>
+                            </div>
+                        </div>
+                        <div class="cor-item">
+                            <div class="cor-preview" style="background: #002A4D;"></div>
+                            <div class="cor-info">
+                                <span class="cor-nome">Dark Background 2</span>
+                                <span class="cor-hex">#002A4D</span>
+                            </div>
+                        </div>
+                        <div class="cor-item">
+                            <div class="cor-preview" style="background: #FFFFFF; border: 1px solid rgba(255,255,255,0.2);"></div>
+                            <div class="cor-info">
+                                <span class="cor-nome">Text</span>
+                                <span class="cor-hex">#FFFFFF</span>
+                            </div>
+                        </div>
+                    </div>
+                ` },
+                { titleEN: 'Typography', contentEN: '<strong>Nunito:</strong><br>• Name - Paola Fagundes · White · Size (50) · Letter Spacing (3)<br>• Role - UX/UI Designer · Teal Green #1D9E75 · Size (22) · Letter Spacing (3)' },
+                { titleEN: 'Tools', contentEN: 'Figma · Canva' }
+            ]
+        }];
+
+
         // ===== FUNÇÕES DO CASE =====
         function openCase(index) {
             const data = projectsData[index];
+            const enData = (typeof isEN !== 'undefined' && isEN && projectsDataEN[index]) ? projectsDataEN[index] : null;
             const overlay = document.getElementById('caseOverlay');
             const content = document.getElementById('caseContent');
 
+            const titulo = enData ? enData.tituloEN : data.titulo;
+            const categoria = enData ? enData.categoriaEN : data.categoria;
+
             let sectionsHtml = '';
-            data.sections.forEach(section => {
-                let contentHtml = section.content;
-                
+            data.sections.forEach((section, i) => {
+                const enSection = enData ? enData.sections[i] : null;
+                const title = enSection ? enSection.titleEN : section.title;
+                let contentHtml = (enSection && enSection.contentEN != null) ? enSection.contentEN : section.content;
+
                 if (section.image) {
-                    contentHtml += `<div style="margin-top: 12px;"><img src="assets/${section.image}" alt="${section.title} - ${data.titulo}" style="width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);" /></div>`;
+                    contentHtml += `<div style="margin-top: 12px;"><img src="assets/${section.image}" alt="${title} - ${titulo}" style="width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);" loading="lazy" /></div>`;
                 }
-                
+
                 if (section.figma) {
-                    contentHtml += `<div style="margin-top: 12px;"><a href="${section.figma}" target="_blank" class="figma-link"><i class="fab fa-figma"></i> Ver no Figma</a></div>`;
+                    const figmaLabel = enData ? 'View on Figma' : 'Ver no Figma';
+                    contentHtml += `<div style="margin-top: 12px;"><a href="${section.figma}" target="_blank" class="figma-link"><i class="fab fa-figma"></i> ${figmaLabel}</a></div>`;
                 }
 
                 sectionsHtml += `
                     <div>
-                        <h4>${section.title}</h4>
+                        <h4>${title}</h4>
                         <div>${contentHtml}</div>
                     </div>
                 `;
@@ -2853,13 +2991,13 @@
 
             content.innerHTML = `
                 <div class="case-banner">
-                    <img src="${data.banner}" alt="${data.titulo}" />
+                    <img src="${data.banner}" alt="${titulo}" />
                 </div>
                 <div class="case-header">
-                    <h2>${data.titulo}</h2>
+                    <h2>${titulo}</h2>
                     <div class="case-meta">
-                        <span><i class="fas fa-tag"></i> ${data.categoria}</span>
-                        <span><i class="fas fa-tools"></i> Ferramentas: ${data.categoria === 'Visual Identity' ? 'Figma | Canva' : 'Figma'}</span>
+                        <span><i class="fas fa-tag"></i> ${categoria}</span>
+                        <span><i class="fas fa-tools"></i> ${enData ? 'Tools' : 'Ferramentas'}: ${categoria === 'Visual Identity' ? 'Figma | Canva' : 'Figma'}</span>
                         <span><i class="fas fa-user"></i> UX/UI Designer</span>
                     </div>
                 </div>
@@ -2873,7 +3011,7 @@
             overlay.scrollTop = 0;
         }
 
-        function closeCase() {
+                function closeCase() {
             document.getElementById('caseOverlay').classList.remove('active');
             document.body.style.overflow = '';
         }
