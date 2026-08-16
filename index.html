@@ -905,7 +905,7 @@
 	#habilidades,
 	#projetos,
 	#contato {
-    	scroll-margin-top: 35px;
+    	scroll-margin-top: 80px;
 	}
 
         .habilidade-categoria {
@@ -1009,6 +1009,8 @@
             border-radius: var(--radius-card);
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            flex-direction: column;
             transition: opacity 0.3s ease, transform 0.3s ease,
                         border-color var(--transition), box-shadow var(--transition);
             box-shadow: var(--shadow-card);
@@ -1116,52 +1118,13 @@
             z-index: 4;
         }
 
-        .projeto-thumbnail .em-breve {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.8);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.8rem;
-            color: var(--primary);
-            border: 1.5px solid var(--primary);
-            backdrop-filter: blur(8px);
-            letter-spacing: 0.08em;
-            animation: pulseBreve 2s ease-in-out infinite;
-            box-shadow: 0 0 20px rgba(29, 158, 117, 0.1);
-            transition: all var(--transition);
-            text-transform: uppercase;
-            z-index: 4;
-        }
-
-        @keyframes pulseBreve {
-            0%,
-            100% {
-                transform: translate(-50%, -50%) scale(1);
-                box-shadow: 0 0 15px rgba(29, 158, 117, 0.05);
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.04);
-                box-shadow: 0 0 30px rgba(29, 158, 117, 0.2);
-                border-color: var(--primary-glow);
-            }
-        }
-
-        .projeto-card:hover .em-breve {
-            animation: none;
-            transform: translate(-50%, -50%) scale(1.06);
-            border-color: var(--text-white);
-            color: var(--text-white);
-            box-shadow: 0 0 40px rgba(29, 158, 117, 0.3);
-        }
-
         .projeto-info {
             padding: 20px 24px 24px;
             position: relative;
             z-index: 4;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .projeto-info .categoria {
@@ -1190,6 +1153,8 @@
         .projeto-info .btn {
             font-size: 0.85rem;
             padding: 8px 20px;
+            margin-top: auto;
+            align-self: flex-start;
         }
 
         /* ===== CASE OVERLAY ===== */
@@ -1384,45 +1349,6 @@
             font-size: 0.7rem;
         }
 
-        .case-body .grid-2col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .case-body .grid-2col .info-card {
-            background: rgba(255, 255, 255, 0.04);
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 3px solid var(--primary);
-        }
-
-        .case-body .grid-2col .info-card h5 {
-            font-family: var(--font-title);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
-
-        .case-body .wireframe-placeholder {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 40px;
-            text-align: center;
-            border: 2px dashed rgba(255, 255, 255, 0.06);
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        .case-body .wireframe-placeholder i {
-            font-size: 2.4rem;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 12px;
-        }
-
         /* ===== PALETA DE CORES - TABELA ===== */
         .cores-grid {
             display: grid;
@@ -1493,6 +1419,41 @@
             background: rgba(29, 158, 117, 0.2);
             transform: translateY(-2px);
             box-shadow: 0 4px 20px rgba(29, 158, 117, 0.15);
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+            cursor: zoom-out;
+        }
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .lightbox img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 10px;
+            object-fit: contain;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+            pointer-events: none;
+        }
+        .case-body img {
+            cursor: zoom-in;
+            transition: opacity 0.2s;
+        }
+        .case-body img:hover {
+            opacity: 0.88;
         }
 
         /* ===== CONTATO ===== */
@@ -1616,6 +1577,10 @@
             background: rgba(0, 0, 0, 0.2);
         }
 
+        .footer i {
+            margin-right: 5px;
+        }
+
         .footer .container {
             display: flex;
             flex-direction: column;
@@ -1732,10 +1697,6 @@
 
             .case-container {
                 padding: 32px 20px;
-            }
-
-            .case-body .grid-2col {
-                grid-template-columns: 1fr;
             }
 
             .navbar {
@@ -2221,10 +2182,10 @@
                 <span></span>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#sobre" class="nav-link">Sobre</a></li>
-                <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
-                <li><a href="#projetos" class="nav-link">Projetos</a></li>
-                <li><a href="#contato" class="nav-link">Contato</a></li>
+                <li><a href="#sobre" class="nav-link" translate="no" data-pt="Sobre" data-en="About Me">Sobre</a></li>
+                <li><a href="#habilidades" class="nav-link" translate="no" data-pt="Habilidades" data-en="Skills">Habilidades</a></li>
+                <li><a href="#projetos" class="nav-link" translate="no" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+                <li><a href="#contato" class="nav-link" translate="no" data-pt="Contato" data-en="Contact">Contato</a></li>
                 <li>
                     <a href="assets/Curriculo-Paola-Fagundes.pdf" class="btn btn-primary btn-sm cv-link" target="_blank">
                         <i class="fa-solid fa-file"></i> Currículo
@@ -2232,7 +2193,7 @@
                 </li>
                 <li class="lang-mobile-item">
                     <button class="lang-btn-mobile" aria-label="Trocar idioma">
-                        <span class="lang-pt">BR</span>
+                        <span class="lang-pt">PT-BR</span>
                         <span class="lang-divider">|</span>
                         <span class="lang-en">EN</span>
                     </button>
@@ -2242,7 +2203,7 @@
     </nav>
 
     <button class="lang-toggle" id="langToggle" aria-label="Trocar idioma">
-        <span class="lang-pt">BR</span>
+        <span class="lang-pt">PT-BR</span>
         <span class="lang-divider">|</span>
         <span class="lang-en">EN</span>
     </button>
@@ -2300,9 +2261,9 @@
             <div class="sobre-texto fade-up">
                 <h2 class="section-title">Sobre <span class="highlight">Mim</span></h2>
                 <p>
-                    UX/UI Designer, com formação em Sistemas de Informação e pós-graduação em andamento em Design de Produtos Digitais (UX/UI). Crio wireframes, fluxos, protótipos e design systems no Figma, e também uso IA e no-code para transformar ideias em interfaces funcionais com agilidade. Tenho como objetivo atuar em projetos escaláveis, com foco em pesquisa, usabilidade e design estratégico, contribuindo para a evolução contínua das soluções digitais.
+                    UX/UI Designer Júnior com bacharelado em Sistemas de Informação e pós-graduação em andamento em Design de Produtos Digitais (UX/UI). Experiência prática no Figma com wireframes, protótipos interativos, fluxos de usuário e Design System, além de criação de sites com ferramentas de IA e no-code. Busco oportunidades em design de produtos digitais com foco em interfaces que equilibram clareza visual e lógica de navegação.
                 <p>
-                <span class="ingles"><i class="fa-solid fa-language"></i> Inglês: Intermediário (leitura)</span>
+                <span class="ingles"><span class="notranslate"><i class="fa-solid fa-language" style="margin-right: 5px;"></i></span>Inglês: Intermediário</span>
             </div>
 
             <!-- Cards em grid 2x2 -->
@@ -2324,7 +2285,7 @@
                             <i class="fas fa-laptop-code"></i>
                         </div>
                         <div class="formacao-content">
-                            <div class="curso">Graduação em Sistemas de Informação</div>
+                            <div class="curso">Bacharelado em Sistemas de Informação</div>
                             <div class="instituicao-periodo">UNEX · 2022 – 2025</div>
                         </div>
                     </div>
@@ -2353,22 +2314,22 @@
                     <h4><i class="fa-solid fa-user-check"></i> Experiências</h4>
                     <div class="experiencia-item">
                         <div class="experiencia-icon">
-                            <i class="fas fa-bullhorn"></i>
+                            <i class="fa-solid fa-file-code"></i>
                         </div>
                         <div class="experiencia-content">
-                            <div class="titulo">Marketing Digital · Bão Digital</div>
-                            <div class="empresa-periodo">2021 – 2022</div>
-                            <div class="descricao">Tradução para soluções digitais dentro de padrões visuais estabelecidos e implementação de informações em sites via WordPress para clientes externos, além de criação de conteúdo para redes sociais.</div>
+                            <div class="titulo">Estagiária em Suporte Técnico · Avatim</div>
+                            <div class="empresa-periodo">2024 – 2025</div>
+                            <div class="descricao">Suporte técnico via acesso remoto, instalação de sistema de vendas, consultas e atualizações em banco de dados SQL Server e treinamento de usuários no sistema. Elaboração de documentação de procedimentos com foco em clareza e usabilidade para o usuário final.</div>
                         </div>
                     </div>
                     <div class="experiencia-item">
                         <div class="experiencia-icon">
-                            <i class="fa-solid fa-file-code"></i>
+                            <i class="fas fa-bullhorn"></i>
                         </div>
                         <div class="experiencia-content">
-                            <div class="titulo">Estagiária em TI · Avatim</div>
-                            <div class="empresa-periodo">2024 – 2025</div>
-                            <div class="descricao">Atuação como ponte entre usuários e sistemas, realizando levantamento de necessidades, validação de fluxos e identificação de melhorias de usabilidade.</div>
+                            <div class="titulo">Auxiliar de Desenvolvimento · Bão Digital</div>
+                            <div class="empresa-periodo">2021 – 2022</div>
+                            <div class="descricao">Manutenção de sites de clientes via WordPress e produção de artes para redes sociais com Canva, com foco na organização do conteúdo e consistência visual.</div>
                         </div>
                     </div>
                 </div>
@@ -2456,23 +2417,25 @@
             <div class="filtros fade-up" id="filtros" role="tablist" aria-label="Filtrar projetos por categoria">
                 <button class="filtro-btn active" data-filter="todos" role="tab" aria-selected="true">Todos</button>
                 <button class="filtro-btn" data-filter="ux-redesign" role="tab" aria-selected="false">UX Redesign</button>
+                <button class="filtro-btn" data-filter="saas" role="tab" aria-selected="false">SaaS</button>
+                <button class="filtro-btn" data-filter="ux-case-study" role="tab" aria-selected="false">UX Case Study</button>
                 <button class="filtro-btn" data-filter="landing-page" role="tab" aria-selected="false">Landing Pages</button>
                 <button class="filtro-btn" data-filter="aplicativo" role="tab" aria-selected="false">Aplicativo</button>
                 <button class="filtro-btn" data-filter="visualidentity" role="tab" aria-selected="false">Visual Identity</button>
             </div>
 
             <div class="projetos-grid" id="projetosGrid">
-                <!-- Card 1 - Skoob -->
-                <div class="projeto-card fade-up" data-categoria="ux-redesign">
+                <!-- Card 1 - TalentOS -->
+                <div class="projeto-card fade-up" data-categoria="saas">
                     <div class="projeto-thumbnail">
-                        <span class="thumb-label">UX Redesign</span>
-                        <img src="assets/loginskoob.png" alt="Redesign Skoob - Login" />
+                        <span class="thumb-label">SaaS</span>
+                        <img src="assets/TalentOS.png" alt="TalentOS - ATS de Recrutamento" />
                     </div>
                     <div class="projeto-info">
-                        <span class="categoria">UX Redesign</span>
-                        <h3>Skoob · Login</h3>
-                        <p>Redesign do fluxo de autenticação com foco em sessão persistente e login por biometria.</p>
-                        <button class="btn btn-outline-primary btn-sm" onclick="openCase(0)" aria-label="Ver case: Skoob · Login">
+                        <span class="categoria">SaaS</span>
+                        <h3><span class="notranslate">TalentOS · </span>ATS de Recrutamento</h3>
+                        <p>Design de interface para SaaS de recrutamento com 12 telas, Design System e protótipo navegável.</p>
+                        <button class="btn btn-outline-primary btn-sm" onclick="openCase(0)" aria-label="Ver case: TalentOS · ATS de Recrutamento">
                             <i class="fas fa-arrow-right"></i> Ver Case
                         </button>
                     </div>
@@ -2494,17 +2457,17 @@
                     </div>
                 </div>
 
-                <!-- Card 3 - Samsung -->
-                <div class="projeto-card fade-up" data-categoria="ux-redesign">
+                <!-- Card 3 - IoT -->
+                <div class="projeto-card fade-up" data-categoria="ux-case-study">
                     <div class="projeto-thumbnail">
-                        <span class="thumb-label">UX Redesign</span>
-                        <img src="assets/bateria.png" alt="Redesign Samsung - Bateria" />
+                        <span class="thumb-label">UX Case Study</span>
+                        <img src="assets/alexa.png" alt="Desafios na Integração de Dispositivos IoT" />
                     </div>
                     <div class="projeto-info">
-                        <span class="categoria">UX Redesign</span>
-                        <h3>Samsung · Informações da Bateria</h3>
-                        <p>Melhoria na exibição da porcentagem da bateria no menu suspenso Samsung.</p>
-                        <button class="btn btn-outline-primary btn-sm" onclick="openCase(2)" aria-label="Ver case: Samsung · Informações da Bateria">
+                        <span class="categoria">UX Case Study</span>
+                        <h3><span class="notranslate">IoT · </span>Integração de Dispositivos</h3>
+                        <p>Estudo de caso sobre falhas de interopera&shy;bilidade entre Amazon Echo Pop e TVs LG e Samsung, com proposta de melhorias no app Alexa.</p>
+                        <button class="btn btn-outline-primary btn-sm" onclick="openCase(2)" aria-label="Ver case: IoT · Integração de Dispositivos">
                             <i class="fas fa-arrow-right"></i> Ver Case
                         </button>
                     </div>
@@ -2518,7 +2481,7 @@
                     </div>
                     <div class="projeto-info">
                         <span class="categoria">Aplicativo</span>
-                        <h3>Leiaute</h3>
+                        <h3 translate="no">Leiaute</h3>
                         <p>Aplicativo mobile projetado para ajudar leitores a registrar e acompanhar suas metas de leitura.</p>
                         <button class="btn btn-outline-primary btn-sm" onclick="openCase(3)" aria-label="Ver case: Leiaute">
                             <i class="fas fa-arrow-right"></i> Ver Case
@@ -2574,27 +2537,35 @@
                     </div>
                 </div>
 
-                <!-- Card 8 - Em Breve 1 -->
-                <div class="projeto-card fade-up" data-categoria="em-breve">
-                    <div class="projeto-thumbnail" style="background: linear-gradient(145deg, rgba(0,84,57,0.3), rgba(0,42,77,0.3)); display:flex; align-items:center; justify-content:center;">
-                        <span class="em-breve">Em Breve</span>
+                <!-- Card 8 - TV Time -->
+                <div class="projeto-card fade-up" data-categoria="ux-case-study">
+                    <div class="projeto-thumbnail">
+                        <span class="thumb-label">UX Case Study</span>
+                        <img src="assets/tv-time.png" alt="TV Time — Em Busca do Substituto" />
                     </div>
                     <div class="projeto-info">
-                        <span class="categoria">Novo Projeto</span>
-                        <h3>Em Desenvolvimento</h3>
-                        <p>Estou trabalhando em um novo projeto. Em breve mais novidades!</p>
+                        <span class="categoria">UX Case Study</span>
+                        <h3>TV Time · Em Busca do Substituto</h3>
+                        <p>Avaliação de apps substitutos ao TV Time e análise de UX do Suite TV, o app escolhido.</p>
+                        <button class="btn btn-outline-primary btn-sm" onclick="openCase(7)" aria-label="Ver case: TV Time · Em Busca do Substituto">
+                            <i class="fas fa-arrow-right"></i> Ver Case
+                        </button>
                     </div>
                 </div>
 
-                <!-- Card 9 - Em Breve 2 -->
-                <div class="projeto-card fade-up" data-categoria="em-breve">
-                    <div class="projeto-thumbnail" style="background: linear-gradient(145deg, rgba(0,84,57,0.3), rgba(0,42,77,0.3)); display:flex; align-items:center; justify-content:center;">
-                        <span class="em-breve">Em Breve</span>
+                <!-- Card 9 - Chute Certo -->
+                <div class="projeto-card fade-up" data-categoria="aplicativo">
+                    <div class="projeto-thumbnail">
+                        <span class="thumb-label">Aplicativo</span>
+                        <img src="assets/chutecerto.png" alt="Chute Certo · App de Quiz" />
                     </div>
                     <div class="projeto-info">
-                        <span class="categoria">Novo Projeto</span>
-                        <h3>Em Desenvolvimento</h3>
-                        <p>Estou trabalhando em um novo projeto. Em breve mais novidades!</p>
+                        <span class="categoria">Aplicativo</span>
+                        <h3><span class="notranslate">Chute Certo · </span>App de Quiz</h3>
+                        <p>Design System escalável do zero com multi-mode variables, componentes animados, cronômetro funcional e protótipo navegável com lógica.</p>
+                        <button class="btn btn-outline-primary btn-sm" onclick="openCase(8)" aria-label="Ver case: Chute Certo · App de Quiz">
+                            <i class="fas fa-arrow-right"></i> Ver Case
+                        </button>
                     </div>
                 </div>
             </div>
@@ -2604,7 +2575,7 @@
     <!-- ===== CONTATO ===== -->
     <section class="contato section-padding" id="contato">
         <div class="container">
-            <h2 class="section-title fade-up">Entre em <span class="highlight">Contato</span></h2>
+            <h2 class="section-title fade-up">Vamos <span class="highlight">Conversar</span></h2>
             <p class="section-subtitle fade-up">Vamos conversar sobre design, projetos e oportunidades.</p>
 
             <div class="contato-grid">
@@ -2616,7 +2587,6 @@
                         <a href="https://br.linkedin.com/in/paola-fagundes" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
                         <a href="https://github.com/paolafms" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                         <a href="https://app.notion.com/p/Paola-Fagundes-UX-UI-Designer-2e97b2c3055780a3bb71ca9756b5344a" target="_blank"><i class="fas fa-sticky-note"></i> Notion</a>
-                        <a href="http://lattes.cnpq.br/4374440977523926" target="_blank"><i class="fas fa-graduation-cap"></i> Currículo Lattes</a>
                         <a href="https://wa.me/5573981054848?text=Olá! Vim através do seu site e gostaria de entrar em contato com você." target="_blank">
                             <i class="fab fa-whatsapp"></i> WhatsApp
                         </a>
@@ -2657,10 +2627,10 @@
                 <img src="assets/logo.png" alt="Paola Fagundes - logomarca" />
                 <span>Paola<span>Fagundes</span></span>
             </div>
-            <p><i class="fa-regular fa-copyright" style="color: var(--primary);"></i> 2026 Paola Fagundes · UX/UI Designer</p>
-            <p><i class="fa-solid fa-location-dot" style="color: var(--primary);"></i> Itabuna (BA) - Brasil</p>
+            <p><span class="notranslate"><i class="fa-regular fa-copyright" style="color: var(--primary);"></i></span> 2026 Paola Fagundes · UX/UI Designer</p>
+            <p><span class="notranslate"><i class="fa-solid fa-location-dot" style="color: var(--primary);"></i></span> Itabuna (BA) - Brasil</p>
             <p>
-                <a href="assets/Curriculo-Paola-Fagundes.pdf" class="cv-link" target="_blank"><i class="fa-solid fa-file"></i> Visualizar Currículo</a>
+                <a href="assets/Curriculo-Paola-Fagundes.pdf" class="cv-link" target="_blank"><span class="notranslate"><i class="fa-solid fa-file"></i></span> Visualizar Currículo</a>
             </p>
         </div>
     </footer>
@@ -2669,6 +2639,11 @@
     <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
         <i class="fas fa-arrow-up"></i>
     </button>
+
+    <!-- ===== LIGHTBOX ===== -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+        <img id="lightboxImg" src="" alt="" />
+    </div>
 
     <!-- ===== CASE OVERLAY ===== -->
     <div class="case-overlay" id="caseOverlay" role="dialog" aria-modal="true" aria-label="Detalhes do projeto">
@@ -2684,20 +2659,25 @@
         // ===== DADOS DOS PROJETOS =====
         const projectsData = [{
             id: 0,
-            titulo: 'Redesign Skoob · Experiência de Login',
-            categoria: 'UX Redesign',
-            banner: 'assets/loginskoob.png',
+            titulo: 'TalentOS — ATS de Recrutamento',
+            categoria: 'SaaS',
+            banner: 'assets/TalentOS.png',
             sections: [
-                { title: 'Visão Geral', content: 'Este é um projeto conceitual desenvolvido para fins de estudo em UX/UI Design, realizado com o objetivo de melhorar a experiência de login no aplicativo Skoob, reduzindo a necessidade de autenticação repetida e tornando o acesso mais rápido e fluido para usuários recorrentes.' },
-                { title: 'Problema', content: 'Usuários do aplicativo Skoob relatam a necessidade frequente de inserir login e senha ao acessar o app, mesmo sendo usuários recorrentes. Essa repetição gera frustração, quebra o fluxo de uso e pode levar ao abandono temporário da plataforma.', image: 'feedbackusuarios.png' },
-                { title: 'Objetivo do Projeto', content: '• Simplificar o acesso ao aplicativo.<br>• Diminuir a necessidade de login repetido.<br>• Tornar a experiência mais fluida para usuários recorrentes.<br>• Alinhar o fluxo de login às expectativas atuais de usabilidade.' },
-                { title: 'Processo UX/UI', content: '1. Levantamento de relatos de usuários reais nas avaliações do app<br>2. Análise do fluxo de login atual identificando pontos de atrito<br>3. Referências através de aplicativos similares<br>4. Definição de solução baseada em sessão persistente e biometria<br>5. Criação de wireframes no Figma<br>6. Documentação do fluxo ideal em 4 telas' },
-                { title: 'Decisões de Design', content: 'A decisão de implementar uma sessão persistente foi baseada no comportamento esperado de usuários recorrentes, que priorizam rapidez e continuidade no acesso ao aplicativo. A inclusão de login por biometria visa reduzir o atrito no processo de autenticação, oferecendo uma alternativa mais ágil e alinhada aos padrões atuais de usabilidade em aplicativos mobile. A proposta também considera a importância da transparência, incluindo mensagens claras sobre o estado da sessão e momentos em que a reautenticação é necessária, reduzindo a incerteza e a frustração do usuário. Essas decisões foram pensadas para equilibrar segurança e usabilidade, garantindo uma experiência mais fluida sem comprometer a proteção dos dados do usuário.' },
-                { title: 'Análise do Fluxo Atual', content: 'Atualmente, o fluxo de login exige que o usuário insira e-mail e senha com frequência, mesmo após acessos anteriores. O aplicativo não deixa claro quando ou por que a sessão é encerrada, o que gera confusão e frustração.', image: 'skoobinicial.png' },
-                { title: 'Solução Proposta', content: 'A proposta de redesign foca em oferecer um acesso mais rápido e contínuo, mantendo a segurança e alinhando o fluxo às expectativas do usuário.' },
-                { title: 'Principais Melhorias', content: '• Sessão persistente para usuários recorrentes.<br>• Login rápido por biometria (digital ou reconhecimento facial).<br>• Opção de login com Google.<br>• Mensagens claras quando a reautenticação for necessária.' },
-                { title: 'Wireframes', content: 'Os wireframes foram desenvolvidos no Figma com foco na simplificação do acesso ao aplicativo. O fluxo prioriza usuários recorrentes, oferecendo opções de login rápido e sessão persistente, além de transparência nos casos em que a reautenticação é necessária.', image: 'loginskoob1.png', figma: 'https://www.figma.com/design/CrcIiNtiIxbcXUMRyPcjOP/Wireframes-%E2%80%93-Redesign-Login-Skoob?node-id=0-1&t=oxgrOa0MhTaYemQA-1' },
-                { title: 'Status do Projeto', content: 'Este projeto foi desenvolvido desde a análise do problema até a criação de wireframes, com aplicação de identidade visual e definição do fluxo ideal de login.' }
+                { title: 'Visão Geral', content: 'TalentOS é um SaaS de gestão de recrutamento (ATS - Applicant Tracking System) desenvolvido como projeto de portfólio UX/UI. O nome une "Talent" (talento, em referência à gestão de pessoas) e "OS" (Operating System), transmitindo a ideia de um sistema operacional para RH, uma plataforma central que organiza todo o processo seletivo de uma empresa.' },
+                { title: 'Problema', content: 'Equipes de RH gerenciam processos seletivos de forma fragmentada, planilhas, e-mails e ferramentas desconectadas geram perda de candidatos, falta de visibilidade do pipeline e dificuldade em tomar decisões baseadas em dados.' },
+                { title: 'Objetivo do Projeto', content: 'Projetar uma interface SaaS complexa e funcional que demonstre domínio em UX de produtos digitais corporativos, incluindo dashboards, tabelas de dados, kanban, formulários, overlays e prototipagem avançada.' },
+                { title: 'Processo UX/UI', content: '1. Definição de escopo a partir de wireframe de referência e análise de padrões de interfaces SaaS corporativas<br>2. Criação do Design System (tokens, tipografia, componentes)<br>3. Desenvolvimento das telas em alta fidelidade<br>4. Prototipagem interativa com fluxo completo de navegação' },
+                { title: 'Design System', content: '• Tipografia: Inter · Escala 1.25<br>• Paleta: Roxo escuro como primário (#3D1F6E), sidebar escura (#1A1A2E), fundo claro (#F8F8FA)<br>• Componentes: Avatar, Badge, Button, Input, Card/Kanban, Nav Item, Stat Card' },
+                { title: 'Dashboard', content: 'Visão geral com métricas principais, atividade recente e próximas entrevistas agendadas.', image: 'Dashboard.png' },
+                { title: 'Vagas — Kanban', content: 'Pipeline de candidatos organizado por etapa: Triagem → Teste Técnico → Entrevista RH → Entrevista Final → Oferta.', image: 'Vagas.png' },
+                { title: 'Perfil do Candidato', content: 'Drawer lateral com 3 abas (Info/Currículo, Avaliações, Timeline) e scroll interno, mantendo o contexto do kanban visível.', image: 'Demonstração-Drawer.png' },
+                { title: 'Cadastro de Candidato', content: 'Formulário de cadastro manual de candidato externo, com campos organizados por seções.', image: 'Cadastro-Candidato.png' },
+                { title: 'Métricas', content: 'Gráfico de barras (candidatos por etapa) e gráfico de linha (contratações por mês) para decisões baseadas em dados.', image: 'Metricas.png' },
+                { title: 'Cadastro de Vagas', content: 'Formulário de criação de nova vaga com campos de cargo, departamento, requisitos e etapas do processo seletivo.', image: 'Cadastro-Vagas.png' },
+                { title: 'Overlays e Modais', content: '• Drawer do candidato com scrollbar funcional<br>• Modal "Agendar Entrevista" como sobreposição centralizada', image: 'Modal-Agendar-Entrevista.png' },
+                { title: 'Fluxo de Navegação', content: '• Dashboard → Vagas → Perfil do Candidato → Modal Agendar Entrevista<br>• Dashboard → Cadastro de Vagas → Vagas<br>• Dashboard → Candidatos → Perfil do Candidato<br>• Candidatos → Cadastro de Candidato → Candidatos<br>• Dashboard → Calendário → Perfil do Candidato<br>• Navegação livre entre todas as telas pela sidebar' },
+                { title: 'Decisões de Design', content: '• Light mode com sidebar escura cria contraste e hierarquia visual sem sobrecarregar a interface<br>• Roxo escuro como primário diferencia o produto do azul padrão corporativo mantendo seriedade<br>• Drawer em vez de tela separada para o perfil do candidato mantém o contexto do kanban visível<br>• Modal como sobreposição para agendamento segue o padrão de produtos SaaS reais<br>• Scrollbar visível no drawer indica conteúdo adicional sem truncar informações do candidato' },
+                { title: 'Status do Projeto', content: 'Concluído · Agosto 2026', figma: 'https://www.figma.com/design/1BpfUobYSutCRN8lDfZt5t/ATS--Saas?node-id=13-67&t=dCEG6fmA5jNzHcvU-1' }
             ]
         }, {
             id: 1,
@@ -2717,22 +2697,21 @@
             ]
         }, {
             id: 2,
-            titulo: 'Redesign Samsung · Exibição da Bateria',
-            categoria: 'UX Redesign',
-            banner: 'assets/bateria.png',
+            titulo: 'Desafios na Integração de Dispositivos IoT',
+            categoria: 'UX Case Study',
+            banner: 'assets/alexa.png',
             sections: [
-                { title: 'Visão Geral', content: 'Projeto conceitual desenvolvido para fins de estudo em UX/UI Design, com foco na melhoria da experiência de configuração da porcentagem da bateria em dispositivos Samsung. Este projeto é um estudo conceitual de UX Design que propõe uma alternativa à exibição constante da porcentagem da bateria na barra de status. A solução sugere que a porcentagem seja visível apenas no menu suspenso, permitindo acesso à informação quando necessário, sem exposição contínua.' },
-                { title: 'Problema', content: 'Atualmente, dispositivos Samsung permitem apenas ativar ou desativar a porcentagem da bateria diretamente no ícone da barra de status. Quando ativada, a informação fica visível o tempo todo, o que pode gerar ansiedade em usuários que acompanham constantemente o nível da bateria, levando a comportamentos como carregar o aparelho com frequência excessiva.', image: 'statuscel.png' },
-                { title: 'Ponto Importante', content: 'O sistema não oferece uma opção intermediária, onde o usuário possa: - Não ver a porcentagem o tempo todo. - Consultar a porcentagem apenas quando quiser.' },
-                { title: 'Contexto de Uso', content: 'Usuários frequentemente acessam o menu suspenso para consultar informações rápidas como conectividade, notificações e status do dispositivo. Neste contexto, a porcentagem da bateria é uma informação útil, mas não necessariamente precisa estar visível de forma contínua.' },
-                { title: 'Objetivo do Projeto', content: '• Permitir a visualização da porcentagem da bateria apenas no menu suspenso.<br>• Evitar a exposição constante da porcentagem na barra de status.<br>• Reduzir ansiedade relacionada ao monitoramento contínuo da bateria.<br>• Oferecer maior controle ao usuário sobre quando acessar essa informação.<br>• Promover uma experiência mais equilibrada e menos invasiva.' },
-                { title: 'Processo UX/UI', content: '1. Identificação do problema<br>2. Análise do comportamento atual do sistema<br>3. Compreensão do impacto no usuário<br>4. Definição da solução<br>5. Criação de wireframes' },
-                { title: 'Análise do Fluxo Atual', content: 'O sistema força o usuário a escolher entre duas opções extremas: ver a porcentagem da bateria o tempo todo ou não vê-la em nenhum momento. Essa limitação desconsidera diferentes perfis de uso e necessidades emocionais, especialmente de usuários que preferem consultar a informação apenas quando necessário.', image: 'comentarioscel.png' },
-                { title: 'Solução Proposta', content: 'A solução propõe acrescentar a opção de exibição da porcentagem da bateria no menu suspenso, mantendo o ícone da bateria na barra de status sem o valor numérico. Dessa forma, o usuário tem acesso à informação sob demanda, sem estímulo visual constante.' },
-                { title: 'Decisões de Design', content: 'A decisão de exibir a porcentagem da bateria apenas no menu suspenso foi baseada no comportamento já existente dos usuários, que acessam essa área para consultar informações rápidas do dispositivo. Manter o ícone da bateria na barra de status sem o valor numérico reduz o estímulo visual constante, ao mesmo tempo em que preserva o acesso rápido à informação quando necessário. Essa abordagem busca equilibrar usabilidade e conforto emocional, evitando a exposição contínua a uma informação que pode gerar ansiedade e comportamentos indesejados. A solução também foi pensada para se integrar ao sistema atual sem alterar o fluxo de navegação ou adicionar complexidade à experiência.' },
-                { title: 'Principais Melhorias', content: '• Porcentagem visível ao abrir o menu suspenso.<br>• Ícone da bateria na barra de status permanece sem números.<br>• Redução de estímulo visual contínuo.<br>• Maior controle do usuário sobre o acesso à informação.<br>• Nenhuma alteração na navegação ou funcionamento atual do sistema.' },
-                { title: 'Wireframes', content: 'Os wireframes foram desenvolvidos no Figma para demonstrar a solução proposta, onde a porcentagem é exibida apenas no menu suspenso. Essa abordagem permite que o usuário consulte a informação sob demanda, reduzindo a exposição constante e possíveis impactos no comportamento, como a ansiedade relacionada ao nível da bateria.', image: 'bateria1.png', figma: 'https://www.figma.com/design/vsSmTo997jAmt01oTv5Tsk/Wireframes-%E2%80%93-Porcentagem-da-bateria-no-menu-suspenso--Samsung-?node-id=1-97&t=VyIovASWr21i7iff-1' },
-                { title: 'Status do Projeto', content: 'Projeto finalizado na etapa de wireframes, com foco em experiência do usuário, controle de informação e bem-estar digital.' }
+                { title: 'Visão Geral', content: 'Enquanto configurava a automação do meu quarto, encontrei dificuldades para integrar uma Amazon Echo Pop (Alexa) com as seguintes Smart TVs: LG Smart TV 32LR600BPSA e Samsung Smart TV UN32T4300AGXZD, e seus respectivos aplicativos, LG ThinQ e Samsung SmartThings.<br><br>Apesar da compatibilidade entre os dispositivos, a experiência era inconsistente. Algumas funções operavam parcialmente, outras deixavam de responder após algum tempo, e os aplicativos apresentavam informações contraditórias. A partir dessa experiência, transformei o problema em um estudo de caso para investigar como a falta de interoperabilidade entre diferentes ecossistemas IoT impacta a experiência do usuário.' },
+                { title: 'Problema', content: 'Cada fabricante oferecia sua própria plataforma de integração, mas nenhuma apresentava uma visão completa do que estava acontecendo.<br><br>Na LG, mesmo com a integração entre o aplicativo Alexa, o LG ThinQ e a Skill LG ThinQ, comandos como "Abrir Netflix" paravam de funcionar após algum tempo. O Echo Pop retornava "Não foi possível abrir [nome do aplicativo]" sem explicar o motivo, sendo necessário reconectar a conta da TV várias vezes — comandos de ligar e desligar continuavam funcionando normalmente.<br><br>Na Samsung, a Alexa desligava a TV normalmente, mas ligar parava de funcionar após algumas horas porque a Skill SmartThings perdia a conexão com o dispositivo, exibindo a TV como offline no aplicativo.', image: 'problema-lg-sam.png' },
+                { title: 'Fluxo do Usuário', content: 'Mapeamento das etapas de integração entre Alexa, SmartThings e LG ThinQ, com identificação dos pontos de falha em cada ecossistema.', image: 'user-flow-tvs.png', figma: 'https://www.figma.com/board/mI2v3I9IGt1xW9YxLEw1Dt/Fluxo-Conex%C3%A3o-IoT?node-id=0-1&t=svuhH1PVVeoPPFEZ-1' },
+                { title: 'Objetivo', content: 'Projetar uma experiência que unifique o diagnóstico da integração entre dispositivos IoT, oferecendo mais transparência durante a configuração, feedbacks claros e informações que ajudem o usuário a identificar rapidamente onde a comunicação foi interrompida.' },
+                { title: 'Pesquisa', content: 'Além dos testes realizados durante a configuração dos dispositivos, foram analisadas avaliações das Skills Samsung SmartThings e LG ThinQ no aplicativo Alexa. Muitos usuários relataram dificuldades, indicando que os problemas fazem parte de uma experiência recorrente, não isolada.', image: 'fb-usuarios-lg-sam.png' },
+                { title: 'Processo UX', content: '• Pesquisa baseada em experiência real<br>• Relatos de usuários coletados nas avaliações das Skills<br>• FigJam — mapeamento visual do fluxo de integração entre os dispositivos<br>• Fluxo do usuário mapeando as etapas de integração entre Alexa, SmartThings e LG ThinQ, com identificação dos pontos de falha<br>• Identificação dos principais pontos de fricção: ausência de feedback claro sobre a origem da falha, perda de conexão intermitente sem aviso e necessidade de reconexão manual repetida<br>• Desenvolvimento de uma proposta focada em interoperabilidade e diagnóstico, materializada em wireframes baseados no visual do app Alexa' },
+                { title: 'Solução — Samsung', content: 'O card do dispositivo passa a exibir a causa real da falha no lugar do genérico "Off-line", informando que a conexão foi perdida via SmartThings. Um botão de reconexão automática é adicionado diretamente no card, permitindo que o usuário resolva o problema sem precisar alternar entre aplicativos.', image: 'wf-samsung.png' },
+                { title: 'Solução — LG: Notificação', content: 'Como o problema exige reautenticação manual da Skill, a solução passa por uma notificação na barra de status do sistema, independente de o app Alexa estar aberto, informando que a Skill LG ThinQ foi desconectada.', image: 'wf-notificacao.png' },
+                { title: 'Solução — LG: Fluxo Guiado', content: 'Ao expandir o painel de notificações, o usuário vê o banner com a causa e um botão "Reconectar agora" que inicia um fluxo guiado de três etapas: verificar se a TV está ligada e conectada ao Wi-Fi, confirmar que o login da Skill LG ThinQ é o mesmo da conta na TV, e verificar se o app Alexa na TV está conectado com a mesma conta Amazon.', image: 'wf-etapas.png', figma: 'https://www.figma.com/design/TlqvOd4aapmkYG1isNrH2F/Conex%C3%A3o-IoT?node-id=0-1&t=QM0zivMXJ7oRXq9q-1' },
+                { title: 'Principais Melhorias', content: '• Mensagem de erro específica no card da TV Samsung, identificando que a falha ocorre na conexão com o SmartThings<br>• Botão de reconexão automática diretamente no card, sem necessidade de alternar entre apps<br>• Notificação na barra de status para a TV LG, ativa mesmo com o app Alexa fechado<br>• Banner de alerta no painel de notificações com causa da falha e ação direta<br>• Fluxo de reconexão guiada em três etapas para reautenticação da Skill LG ThinQ<br>• Feedbacks claros e acionáveis em ambos os cenários, substituindo mensagens genéricas' },
+                { title: 'Status do Projeto', content: 'Projeto finalizado, com o objetivo de reduzir a frustração durante a configuração de dispositivos inteligentes, tornando a experiência mais transparente, previsível e confiável.' }
             ]
         }, {
             id: 3,
@@ -2752,6 +2731,7 @@
             id: 4,
             titulo: 'Mix Bombonas',
             categoria: 'Landing Page',
+            ferramentas: 'Claude AI',
             banner: 'assets/mixbombonas.png',
             sections: [
                 { title: 'Visão Geral', content: 'Cliente real do segmento de vendas de embalagens plásticas em Itabuna/BA. O objetivo foi criar uma presença digital que comunicasse o catálogo de produtos e convertesse visitantes em contato via WhatsApp.' },
@@ -2764,6 +2744,7 @@
             id: 5,
             titulo: 'Santtec Máquinas',
             categoria: 'Landing Page',
+            ferramentas: 'Claude AI',
             banner: 'assets/santtec.png',
             sections: [
                 { title: 'Visão Geral', content: 'Cliente do segmento de locação de máquinas de açaí e sorvete, atuando em Goiás e DF. O objetivo foi criar uma landing page focada em conversão, comunicando o modelo de negócio de forma clara e direcionando leads para contato via WhatsApp.' },
@@ -2823,29 +2804,64 @@
                 { title: 'Tipografia', content: '<strong>Nunito:</strong><br>• Nome - Paola Fagundes · Branco · Tamanho (50) · Espaçamento entre Letras (3)<br>• Cargo - UX/UI Designer · Verde #1D9E75 · Tamanho (22) · Espaçamento entre Letras (3)' },
                 { title: 'Ferramentas', content: 'Figma · Canva' }
             ]
+        }, {
+            id: 7,
+            titulo: 'Em Busca do Substituto: A Jornada Após o Fim do TV Time',
+            categoria: 'UX Case Study',
+            banner: 'assets/tv-time.png',
+            sections: [
+                { title: 'Visão Geral', content: 'Com o encerramento do TV Time, usuários de todo o mundo se viram diante de um problema inesperado: encontrar um substituto à altura de um app que acumulou mais de 10 milhões de downloads e fazia parte da rotina de quem acompanha séries e filmes há anos.<br><br>O TV Time ofereceu aos usuários a opção de exportar todos os dados registrados, um gesto importante para quem acumulou anos de histórico. Ainda assim, encontrar um novo app que entregasse a mesma experiência se mostrou mais difícil do que o esperado.', image: 'app-tv-time.png' },
+                { title: 'Problema', content: 'Muitas sugestões surgiram, mas a oferta era fragmentada: havia apps que só contabilizavam filmes e outros que só contabilizavam séries. Alguns tentaram replicar a fórmula do TV Time, mas sempre havia algo que não agradava (funcionalidades ausentes, usabilidade inconsistente, identidade visual fraca ou limitações que comprometiam o uso no dia a dia). A busca durou mais de um mês.' },
+                { title: 'Objetivo', content: 'Avaliar os principais apps substitutos ao TV Time sob uma perspectiva de UX, identificando pontos fortes, limitações e o que cada um entrega ou deixa de entregar em comparação ao app original. A partir dessa análise, documentar a escolha do app substituto e os pontos de melhoria identificados.' },
+                { title: 'Pesquisa', content: 'Além da experiência própria de uso e teste de cada app, foram coletados relatos de outros usuários nas redes sociais, evidenciando que a dificuldade de encontrar um substituto é uma experiência coletiva, não isolada.', image: 'coments-tv-time.png' },
+                { title: 'Processo UX', content: '• Experiência real de migração após o encerramento do TV Time<br>• Coleta de relatos de usuários nas redes sociais<br>• Teste e avaliação de seis apps substitutos<br>• Mapeamento comparativo com critérios de funcionalidade, usabilidade e design<br>• Análise heurística do app escolhido com identificação de pontos positivos, negativos e sugestões de melhoria' },
+                { title: 'Avaliação de Cada Aplicativo Testado', content: '• Bingeboxd: interface não agradou, principalmente os títulos Watchlist, Upcoming e History, que parecem não combinar com os demais elementos da tela<br>• Sofa Time: interface poluída com muita informação<br>• Banco de Séries: interface muito simples e sem apelo visual<br>• Serializd: descartado de imediato, ao criar a conta, o app travava constantemente e só aceitava marcar séries<br>• Trakt: usado por algum tempo. Interface moderna e intuitiva, porém não permite marcar conteúdos como reassistidos e a tela de comentários não suporta fotos ou GIFs<br>• Suite TV: agradou bastante, pois tem a interface semelhante ao TV Time', image: 'avaliacao-series.png' },
+                { title: 'App Escolhido: Suite TV', content: 'O Suite TV foi o app que mais se aproximou da experiência do TV Time. Com uma base ativa de usuários, é possível importar comentários antigos feitos na época em que assistiu determinado filme ou série. A interface das telas "Para Assistir" e "Em Breve" segue uma lógica familiar para quem veio do TV Time, reduzindo a curva de aprendizado. O app também permite escolher o poster dos filmes e séries e está em constante atualização.<br><br>A seguir, uma análise dos pontos positivos, negativos e sugestões de melhorias encontradas no app Suite TV.', image: 'Análise-Suite-ptbr.png', figma: 'https://www.figma.com/board/XReflFmiyYw9KvW2LBpkaL/An%C3%A1lise-Suite-TV?node-id=0-1&t=FwQpp8nOpO3sxEZS-1' },
+                { title: 'Considerações Finais', content: 'O Suite TV é, até o momento, a alternativa mais completa disponível, mas ainda há espaço considerável para evoluir em experiência do usuário, especialmente nas telas de interação com o conteúdo.' }
+            ]
+        },
+        {
+            id: 8,
+            titulo: 'Chute Certo · App de Quiz',
+            categoria: 'Aplicativo',
+            ferramentas: 'Figma | FigJam',
+            banner: 'assets/chutecerto.png',
+            sections: [
+                { title: 'Visão Geral', content: 'Chute Certo é um aplicativo mobile conceitual de quiz de futebol. O nome reforça a identidade do produto — acertar a resposta é como acertar um chute. O projeto foi desenvolvido com foco na construção de um Design System escalável do zero, prototipagem avançada com variáveis de lógica, animações com Figma Motion e handoff documentado.' },
+                { title: 'Objetivo do Projeto', content: 'Criar uma interface mobile temática para quiz de futebol, com foco em hierarquia visual dark/neon, Design System com tokens em 3 níveis e protótipo funcional com variáveis de lógica. O projeto demonstra domínio de DS escalável, multi-mode variables, componentes com 5 estados animados, cronômetro funcional via variantes e prototipagem com overlays e condicionais.' },
+                { title: 'Processo UX/UI', content: '1. Construção do Design System: definição de paleta via Variables em 3 níveis (Global → Alias → Componente), dois modos (Default e Copa) sem duplicar componentes, escala tipográfica com proporção 1.25 e criação dos componentes: Botão com 5 estados animados, Card/Categoria, Card/Pergunta, Header, Header/Quiz e Header/Cronômetro.<br>2. Mapeamento do fluxo no FigJam: user flow completo antes de montar as telas, incluindo pontos de decisão (Acertou? / Mais perguntas?) e anotações de produto (30s por pergunta, resultado compartilhável).<br>3. Construção das telas: Splash (com animação Figma Motion), Inicial (seleção de categoria), Quiz (pergunta + 4 alternativas + cronômetro), Modal/Correto e Modal/Errado (overlays de feedback) e Resultado (pontuação final + ações).<br>4. Prototipagem com variáveis de lógica: navegação completa entre telas, variáveis pontuacao (Number) e respostaCorreta (Boolean) com ações condicionais, cronômetro regressivo funcional via ciclo de variantes e overlay de feedback com fechamento automático em 1500ms.', image: 'fluxo-chute-certo.png', figma: 'https://www.figma.com/board/SQsBqjFokY6CqQQftqVjhz/Fluxo-Chute-Certo?node-id=0-1&t=or8EAu8XekaW7Bl9-1' },
+                { title: 'Decisões de Design', content: '• Os tokens em 3 níveis garantem que uma mudança no primitivo (ex: cor verde) propaga automaticamente para todos os componentes, sem edição manual.<br>• O modo Copa altera color/brand/primary e color/surface para identidade visual alternativa sem duplicar nenhum componente.<br>• O Modal de feedback foi configurado como overlay sobre o Quiz, sem navegar para nova tela, mantendo o contexto da partida.<br>• O cronômetro funcional exigiu arquitetura de ciclo entre duas variantes do componente, com a lógica matemática no componente e o destino de navegação injetado na instância, tornando o componente reutilizável em qualquer tela.<br>• A animação de splash com Figma Motion usa keyframes independentes por elemento, necessário para a chuteira e a bola se moverem simultaneamente em direções diferentes.' },
+                { title: 'Wireframes', content: 'O arquivo Figma contém cinco páginas:<br>• Design System com paleta, tipografia, componentes e dois modos documentados.<br>• Produto com as 4 telas e 2 modais do fluxo principal.<br>• Foundations com escala tipográfica e tokens de cor.<br>• Components com todos os componentes e variantes.<br>• Protótipo navegável completo com variáveis de lógica.', image: 'wf-chute-certo.png', figma: 'https://www.figma.com/design/FW0OxGFUjrAItyRSXtAsd3/Chute-Certo---Design-System?node-id=90-2&t=aOA7A8r87UhZM992-1' },
+                { title: 'Status do Projeto', content: 'Projeto conceitual desenvolvido para prática de UX/UI Design. Ferramentas utilizadas: Figma (Variables com multi-mode, Components, Variants, Auto Layout, Prototipagem com Overlays e Condicionais, Figma Motion).' }
+            ]
         }];
 
         // ===== EN TRANSLATIONS =====
         const projectsDataEN = [{
-            tituloEN: 'Skoob Redesign · Login Experience',
-            categoriaEN: 'UX Redesign',
+            tituloEN: 'TalentOS — Recruitment ATS',
+            categoriaEN: 'SaaS',
             sections: [
-                { titleEN: 'Overview', contentEN: 'This is a conceptual project developed for UX/UI Design study purposes, aimed at improving the login experience on the Skoob app, reducing the need for repeated authentication and making access faster and smoother for returning users.' },
-                { titleEN: 'Problem', contentEN: 'Skoob app users report having to enter their login and password frequently, even as returning users. This repetition creates frustration, disrupts the user flow and can lead to temporary disengagement from the platform.' },
-                { titleEN: 'Project Goal', contentEN: '• Simplify app access.<br>• Reduce repeated login requirements.<br>• Create a smoother experience for returning users.<br>• Align the login flow with current usability standards.' },
-                { titleEN: 'UX/UI Process', contentEN: '1. Collection of real user reports from app reviews<br>2. Analysis of the current login flow to identify friction points<br>3. References from similar apps<br>4. Solution based on persistent session and biometrics<br>5. Wireframe creation in Figma<br>6. Documentation of the ideal flow across 4 screens' },
-                { titleEN: 'Design Decisions', contentEN: 'The decision to implement a persistent session was based on the expected behavior of returning users, who prioritize quick and continuous access. Biometric login was included to reduce friction in the authentication process, offering a faster alternative aligned with current mobile usability standards. The proposal also considers transparency, with clear messages about the session state and moments when re-authentication is required, reducing uncertainty and user frustration. These decisions were made to balance security and usability, ensuring a smoother experience without compromising user data protection.' },
-                { titleEN: 'Current Flow Analysis', contentEN: 'Currently, the login flow requires users to enter their email and password frequently, even after previous logins. The app does not clearly communicate when or why the session ends, which creates confusion and frustration.' },
-                { titleEN: 'Proposed Solution', contentEN: 'The redesign proposal focuses on offering faster and continuous access, maintaining security and aligning the flow with user expectations.' },
-                { titleEN: 'Key Improvements', contentEN: '• Persistent session for returning users.<br>• Quick login via biometrics (fingerprint or facial recognition).<br>• Google login option.<br>• Clear messages when re-authentication is required.' },
-                { titleEN: 'Wireframes', contentEN: 'Wireframes were developed in Figma focusing on simplifying app access. The flow prioritizes returning users, offering quick login options and persistent sessions, as well as transparency in cases where re-authentication is required.' },
-                { titleEN: 'Project Status', contentEN: 'This project was developed from problem analysis through wireframe creation, with visual identity application and definition of the ideal login flow.' }
+                { titleEN: 'Overview', contentEN: 'TalentOS is a recruitment management SaaS (ATS - Applicant Tracking System) developed as a UX/UI portfolio project. The name combines "Talent" (in reference to people management) and "OS" (Operating System), conveying the idea of an HR operating system — a central platform that organizes a company&#39;s entire hiring process.' },
+                { titleEN: 'Problem', contentEN: 'HR teams manage hiring processes in a fragmented way: spreadsheets, emails, and disconnected tools lead to lost candidates, lack of pipeline visibility, and difficulty making data-driven decisions.' },
+                { titleEN: 'Project Goal', contentEN: 'Design a complex, functional SaaS interface that demonstrates mastery of UX for corporate digital products, including dashboards, data tables, kanban boards, forms, overlays, and advanced prototyping.' },
+                { titleEN: 'UX/UI Process', contentEN: '1. Scope definition based on reference wireframe and analysis of corporate SaaS interface patterns<br>2. Design System creation (tokens, typography, components)<br>3. High-fidelity screen development<br>4. Interactive prototyping with complete navigation flow' },
+                { titleEN: 'Design System', contentEN: '• Typography: Inter · Scale 1.25<br>• Palette: Dark purple as primary (#3D1F6E), dark sidebar (#1A1A2E), light background (#F8F8FA)<br>• Components: Avatar, Badge, Button, Input, Card/Kanban, Nav Item, Stat Card' },
+                { titleEN: 'Dashboard', contentEN: 'Overview with key metrics, recent activity, and upcoming scheduled interviews.' },
+                { titleEN: 'Jobs — Kanban', contentEN: 'Candidate pipeline organized by stage: Screening → Technical Test → HR Interview → Final Interview → Offer.' },
+                { titleEN: 'Candidate Profile', contentEN: 'Side drawer with 3 tabs (Info/Resume, Evaluations, Timeline) and internal scroll, keeping the kanban context visible.' },
+                { titleEN: 'Candidate Registration', contentEN: 'Manual registration form for external candidates, with fields organized by sections.' },
+                { titleEN: 'Metrics', contentEN: 'Bar chart (candidates by stage) and line chart (monthly hires) for data-driven decisions.' },
+                { titleEN: 'Job Registration', contentEN: 'Form for creating a new job opening with fields for role, department, requirements, and hiring process stages.' },
+                { titleEN: 'Overlays & Modals', contentEN: '• Candidate drawer with functional scrollbar<br>• "Schedule Interview" modal as centered overlay' },
+                { titleEN: 'Navigation Flow', contentEN: '• Dashboard → Jobs → Candidate Profile → Schedule Interview Modal<br>• Dashboard → Job Registration → Jobs<br>• Dashboard → Candidates → Candidate Profile<br>• Candidates → Candidate Registration → Candidates<br>• Dashboard → Calendar → Candidate Profile<br>• Free navigation between all screens via sidebar' },
+                { titleEN: 'Design Decisions', contentEN: '• Light mode with dark sidebar creates contrast and visual hierarchy without overwhelming the interface<br>• Dark purple as primary differentiates the product from standard corporate blue while maintaining seriousness<br>• Drawer instead of a separate screen for candidate profile keeps kanban context visible<br>• Modal as overlay for scheduling follows real SaaS product behavior<br>• Visible scrollbar in the drawer indicates additional content without truncating candidate information' },
+                { titleEN: 'Project Status', contentEN: 'Completed · August 2026' }
             ]
         }, {
             tituloEN: 'Spotify Redesign · Random Library Playback',
             categoriaEN: 'UX Redesign',
             sections: [
-                { titleEN: 'Overview', contentEN: 'A conceptual project developed for UX/UI Design study that explores the absence of a shuffle playback feature covering the user&#39;s entire personal library on Spotify. The proposal aims to reduce decision effort in moments of indecision, allowing users to listen to music randomly from different types of content they&#39;ve already saved.' },
+                { titleEN: 'Overview', contentEN: 'A conceptual project developed as a UX/UI Design study that explores the absence of a shuffle playback feature covering the user&#39;s entire personal library on Spotify. The proposal aims to reduce decision-making effort in moments of indecision, allowing users to listen to music randomly from different types of content they&#39;ve already saved.' },
                 { titleEN: 'Problem', contentEN: 'Currently, Spotify does not offer a shuffle option covering the user&#39;s full personal library. The shuffle feature is limited to isolated contexts, such as a playlist, album, or liked songs. When users don&#39;t know what to listen to, this limitation requires a prior choice and reduces playback variety, making it harder to rediscover music.' },
                 { titleEN: 'Project Goal', contentEN: '• Reduce decision effort in moments of indecision<br>• Expand playback variety<br>• Enable rediscovery of already-saved content<br>• Give users more control over their music library' },
                 { titleEN: 'UX/UI Process', contentEN: '1. Problem identification from user experience<br>2. Analysis of current playback options in the app<br>3. Use case definition: "I don&#39;t know what to listen to right now"<br>4. Solution proposal centered on the user&#39;s personal library<br>5. Wireframe creation with visual identity applied' },
@@ -2856,27 +2872,26 @@
                 { titleEN: 'Project Status', contentEN: 'Project completed at the wireframe stage, focused on decision-making, user autonomy, and reducing frustration in moments of musical indecision.' }
             ]
         }, {
-            tituloEN: 'Samsung Redesign · Battery Display',
-            categoriaEN: 'UX Redesign',
+            tituloEN: 'Challenges in IoT Device Integration',
+            categoriaEN: 'UX Case Study',
             sections: [
-                { titleEN: 'Overview', contentEN: 'A conceptual UX/UI Design study project focused on improving the battery percentage display experience on Samsung devices. It proposes an alternative to always-on percentage display in the status bar, suggesting it be visible only in the pull-down menu, giving users on-demand access without constant visual stimulus.' },
-                { titleEN: 'Problem', contentEN: 'Currently, Samsung devices only allow enabling or disabling the battery percentage icon in the status bar. When enabled, the information is always visible, which can cause anxiety in users who constantly monitor battery levels, leading to frequent unnecessary charging.' },
-                { titleEN: 'Important Note', contentEN: 'The system offers no middle ground — users can&#39;t: - Hide the percentage from the status bar. - Check it on demand when needed.' },
-                { titleEN: 'Usage Context', contentEN: 'Users frequently open the pull-down menu to check quick information like connectivity, notifications, and device status. In this context, the battery percentage is useful, but doesn&#39;t need to be constantly visible.' },
-                { titleEN: 'Project Goal', contentEN: '• Allow battery percentage to be viewed only in the pull-down menu.<br>• Avoid constant exposure of the percentage in the status bar.<br>• Reduce anxiety related to continuous battery monitoring.<br>• Give users more control over when to access that information.<br>• Promote a more balanced and less intrusive experience.' },
-                { titleEN: 'UX/UI Process', contentEN: '1. Problem identification<br>2. Analysis of current system behavior<br>3. Understanding user impact<br>4. Solution definition<br>5. Wireframe creation' },
-                { titleEN: 'Current Flow Analysis', contentEN: 'The system forces users to choose between two extremes: always show or never show the battery percentage. This limitation ignores different usage profiles and emotional needs, especially for users who prefer to check the information only when necessary.' },
-                { titleEN: 'Proposed Solution', contentEN: 'The solution adds a battery percentage display option in the pull-down menu, keeping the battery icon in the status bar without the numeric value. This way, users can access the information on demand, without constant visual stimulus.' },
-                { titleEN: 'Design Decisions', contentEN: 'The decision to show the battery percentage only in the pull-down menu was based on existing user behavior — they already access this area to check quick device information. Keeping the battery icon in the status bar without the numeric value reduces constant visual stimulus while preserving quick access when needed. This approach balances usability and emotional comfort, avoiding continuous exposure to information that can cause anxiety. The solution was also designed to integrate with the current system without changing the navigation flow or adding complexity.' },
-                { titleEN: 'Key Improvements', contentEN: '• Percentage visible when opening the pull-down menu.<br>• Battery icon in the status bar remains without numbers.<br>• Reduced continuous visual stimulus.<br>• Greater user control over information access.<br>• No changes to the current navigation or system behavior.' },
-                { titleEN: 'Wireframes', contentEN: 'Wireframes were developed in Figma to demonstrate the proposed solution, where the percentage is shown only in the pull-down menu. This approach lets users check the information on demand, reducing constant exposure and potential behavioral impacts such as battery-related anxiety.' },
-                { titleEN: 'Project Status', contentEN: 'Project completed at the wireframe stage, focused on user experience, information control, and digital well-being.' }
+                { titleEN: 'Overview', contentEN: 'While setting up automation in my room, I encountered difficulties integrating an Amazon Echo Pop (Alexa) with the following Smart TVs: LG Smart TV 32LR600BPSA and Samsung Smart TV UN32T4300AGXZD, and their respective apps, LG ThinQ and Samsung SmartThings.<br>Despite device compatibility, the experience was inconsistent. Some functions worked partially, others stopped responding over time, and the apps displayed contradictory information. Based on this experience, I turned the problem into a case study to investigate how the lack of interoperability between different IoT ecosystems impacts the user experience.' },
+                { titleEN: 'Problem', contentEN: 'Each manufacturer offered its own integration platform, but none provided a complete picture of what was happening.<br><br>On the LG side, even with integration between the Alexa app, the LG ThinQ mobile app, and the LG ThinQ Skill, commands like "Open Netflix" stopped working after some time. The Echo Pop would return "I couldn&#39;t open [app name]" without explaining why, requiring the TV account to be reconnected several times — although turning the TV on and off continued to work normally.<br><br>On the Samsung side, Alexa could turn the TV off normally, but the command to turn it on stopped working after a few hours because the SmartThings Skill lost connection with the device, displaying the TV as offline in the app.' },
+                { titleEN: 'User Flow', contentEN: 'Mapping of the integration steps between Alexa, SmartThings, and LG ThinQ, identifying failure points in each ecosystem.' },
+                { titleEN: 'Goal', contentEN: 'Design an experience that unifies integration diagnostics between IoT devices, offering more transparency during setup, clear feedback, and information that helps users quickly identify where communication was interrupted.' },
+                { titleEN: 'Research', contentEN: 'In addition to tests performed during device setup, reviews of the Samsung SmartThings and LG ThinQ Skills on the Alexa app were analyzed. Many users reported difficulties, indicating that the problems are part of a recurring experience, not an isolated one.' },
+                { titleEN: 'UX Process', contentEN: '• Research based on real-world experience<br>• User reports collected from Skill reviews<br>• FigJam — visual mapping of the integration flow between devices<br>• User flow mapping the integration steps between Alexa, SmartThings, and LG ThinQ, identifying failure points<br>• Identification of main friction points: absence of clear feedback on the source of failure, intermittent connection loss without warning, and the need for repeated manual reconnection<br>• Development of a proposal focused on interoperability and diagnostics, materialized in wireframes based on the Alexa app&#39;s visual language' },
+                { titleEN: 'Solution — Samsung', contentEN: 'The device card now displays the actual cause of failure instead of the generic "Offline" message, informing the user that the connection was lost via SmartThings. An automatic reconnect button is added directly to the card, with no need to switch between apps.' },
+                { titleEN: 'Solution — LG: Notification', contentEN: 'Since the problem requires manual Skill re-authentication, the solution involves a system status bar notification — independent of whether the Alexa app is open — informing the user that the LG ThinQ Skill has disconnected.' },
+                { titleEN: 'Solution — LG: Guided Flow', contentEN: 'When expanding the notification panel, the user sees a banner with the cause and a "Reconnect now" button that initiates a guided three-step flow: check that the TV is on and connected to Wi-Fi, confirm that the LG ThinQ Skill login matches the account on the TV, and verify that the Alexa app on the TV is connected to the same Amazon account.' },
+                { titleEN: 'Key Improvements', contentEN: '• Specific error message on the Samsung TV card, identifying that the failure occurs in the SmartThings connection<br>• Automatic reconnect button directly on the card, with no need to switch between apps<br>• Status bar notification for the LG TV, active even when the Alexa app is closed<br>• Alert banner in the notification panel with the cause of failure and a direct action<br>• Guided three-step reconnection flow for LG ThinQ Skill re-authentication<br>• Clear and actionable feedback for both scenarios, replacing generic error messages' },
+                { titleEN: 'Project Status', contentEN: 'Project completed, with the goal of reducing frustration during smart device setup, making the experience more transparent, predictable, and reliable.' }
             ]
         }, {
             tituloEN: 'Leiaute · Reading Tracker App',
             categoriaEN: 'App',
             sections: [
-                { titleEN: 'Overview', contentEN: 'Leiaute is a conceptual mobile reading tracker app. The name is a wordplay on the Portuguese word "leia" (read) and "layout," reinforcing visual identity as part of the product concept. The project was developed focused on building a consistent interface using best UX/UI practices, including a Design System, advanced prototyping, and documented handoff.' },
+                { titleEN: 'Overview', contentEN: 'Leiaute is a conceptual mobile reading tracker app. The name is a wordplay on the Portuguese word "leia" (read) and "layout," reinforcing visual identity as part of the product concept. The project was developed with a focus on building a consistent interface using best UX/UI practices, including a Design System, advanced prototyping, and documented handoff.' },
                 { titleEN: 'Problem', contentEN: 'Users who track their reading often use different tools (notes, generic apps, or memory), which makes it hard to monitor progress and stay organized. This is common among frequent readers consuming multiple books simultaneously who need a simple way to track progress.' },
                 { titleEN: 'Project Goal', contentEN: 'Create an elegant and functional mobile interface for reading tracking, focused on clear visual hierarchy, component consistency, and intuitive navigation flow. The project demonstrates mastery of Design Systems, Variables with multiple modes, Components with Variants, overlay prototyping, and documented Figma handoff.' },
                 { titleEN: 'UX/UI Process', contentEN: 'The project followed a structured four-step process. First, the Design System foundation was built: color palette via Variables, typographic hierarchy with Styles, and reusable components (Button/Primary with variants, Tag/Genre, Book/Card). The second step was screen expansion — from 5 to 7 screens: Splash, Home, Details (with synopsis, star rating, progress bar, and status button), Search, Shelf (with reading status filters and card grid), Profile (with stats, metrics, and most-read genres), and a Modal (add to shelf). The third step was handoff documentation with specs for the Book/Card in all 4 states. The fourth step was prototyping: full tab-bar navigation with Dissolve transition · 300ms · Ease Out, card-to-Details navigation, working back arrow, and Add to Shelf modal as overlay.' },
@@ -2953,6 +2968,31 @@
                 { titleEN: 'Typography', contentEN: '<strong>Nunito:</strong><br>• Name - Paola Fagundes · White · Size (50) · Letter Spacing (3)<br>• Role - UX/UI Designer · Teal Green #1D9E75 · Size (22) · Letter Spacing (3)' },
                 { titleEN: 'Tools', contentEN: 'Figma · Canva' }
             ]
+        }, {
+            tituloEN: 'In Search of a Replacement: The Journey After TV Time\'s Shutdown',
+            categoriaEN: 'UX Case Study',
+            sections: [
+                { titleEN: 'Overview', contentEN: 'With the shutdown of TV Time, users around the world faced an unexpected problem: finding a worthy replacement for an app that had accumulated over 10 million downloads and had become part of the routine of series and movie watchers for years.<br>TV Time offered users the option to export all their recorded data — an important gesture for those who had accumulated years of history. Even so, finding a new app that delivered the same experience turned out to be harder than expected.' },
+                { titleEN: 'Problem', contentEN: 'Many suggestions emerged, but the options were fragmented: some apps only tracked movies while others only tracked series. Some tried to replicate TV Time\'s formula, but there was always something missing — absent features, inconsistent usability, weak visual identity, or limitations that compromised everyday use.<br>The search lasted more than a month.' },
+                { titleEN: 'Goal', contentEN: 'Evaluate the main TV Time replacement apps from a UX perspective, identifying strengths, limitations, and what each one delivers or fails to deliver compared to the original app. Based on this analysis, document the choice of replacement app and the improvement opportunities identified.' },
+                { titleEN: 'Research', contentEN: 'In addition to personal experience testing each app, user reports were collected from social media, showing that the difficulty of finding a replacement is a collective experience, not an isolated one.' },
+                { titleEN: 'UX Process', contentEN: '• Real migration experience after TV Time\'s shutdown<br>• Collection of user reports from social media<br>• Testing and evaluation of six replacement apps<br>• Comparative mapping based on functionality, usability, and design criteria<br>• Heuristic analysis of the chosen app with identification of positives, negatives, and improvement suggestions' },
+                { titleEN: 'Evaluation of Each Application Tested', contentEN: '• Bingeboxd: the interface wasn\'t appealing, especially the Watchlist, Upcoming, and History labels, which seem out of place with the rest of the screen<br>• Sofa Time: cluttered interface with too much information<br>• Banco de Séries: very simple interface with no visual appeal<br>• Serializd: dismissed immediately — when creating an account, the app crashed constantly and only allowed marking series<br>• Trakt: used for a while. Modern and intuitive interface, but doesn\'t allow marking content as rewatched, and the comment screen doesn\'t support photos or GIFs<br>• Suite TV: highly appealing, as it has an interface similar to TV Time' },
+                { titleEN: 'Chosen App: Suite TV', contentEN: 'Suite TV was the app that came closest to the TV Time experience. With an active user base, it\'s possible to import old comments made at the time of watching a particular movie or series. The "Watch Later" and "Coming Soon" screens follow a familiar logic for those coming from TV Time, reducing the learning curve. The app also allows choosing the poster for movies and series and is constantly being updated.<br><br>Below is an analysis of the positives, negatives, and improvement suggestions found in the Suite TV app.', imageEN: 'Análise-Suite-eng.png' },
+                { titleEN: 'Final Thoughts', contentEN: 'Suite TV is, for now, the most complete alternative available, but there is still considerable room to improve the user experience, especially on the content interaction screens.' }
+            ]
+        },
+        {
+            tituloEN: 'Chute Certo · Football Quiz App',
+            categoriaEN: 'App',
+            sections: [
+                { titleEN: 'Overview', contentEN: 'Chute Certo is a conceptual mobile football quiz app. The name reinforces the product identity — getting the right answer is like hitting the perfect shot. The project was developed with a focus on building a scalable Design System from scratch, advanced prototyping with logic variables, Figma Motion animations, and documented handoff.' },
+                { titleEN: 'Project Goal', contentEN: 'To create a themed mobile interface for a football quiz, focusing on dark/neon visual hierarchy, a Design System with 3-level tokens, and a functional prototype with logic variables. The project demonstrates mastery of scalable DS, multi-mode variables, components with 5 animated states, a functional timer via variants, and prototyping with overlays and conditionals.' },
+                { titleEN: 'UX/UI Process', contentEN: '1. Design System: defined color palette via Variables with 3 levels (Global → Alias → Component), two modes (Default and Copa) without duplicating components, typographic scale with a 1.25 ratio, and component creation: Button with 5 animated states, Card/Category, Card/Question, Header, Header/Quiz, and Header/Timer.<br>2. FigJam Flow Mapping: complete user flow before building screens, including decision points (Correct? / More questions?) and product notes (30s per question, shareable result).<br>3. Screen Design: Splash (with Figma Motion animation), Home (category selection), Quiz (question + 4 options + timer), Correct/Wrong Modals (feedback overlays), and Result (final score + actions).<br>4. Prototyping with logic variables: complete navigation between screens, score (Number) and correctAnswer (Boolean) variables with conditional actions, functional countdown timer via variant cycle, and feedback overlay with automatic close after 1500ms.', figma: 'https://www.figma.com/board/SQsBqjFokY6CqQQftqVjhz/Fluxo-Chute-Certo?node-id=0-1&t=or8EAu8XekaW7Bl9-1' },
+                { titleEN: 'Design Decisions', contentEN: '• 3-level tokens ensure that a change at the primitive level (e.g., green color) automatically propagates to all components, without manual editing.<br>• Copa mode changes color/brand/primary and color/surface for an alternative visual identity without duplicating any components.<br>• The feedback Modal was configured as an overlay over the Quiz screen, without navigating to a new page, keeping the game context intact.<br>• The functional timer required a cycle architecture between two component variants, with the math logic inside the component and the navigation destination injected at the instance level, making it reusable across any screen.<br>• The Figma Motion splash animation uses independent keyframes per element, required so the boot and the ball can move simultaneously in different directions.' },
+                { titleEN: 'Wireframes', contentEN: 'The Figma file contains five pages:<br>• Design System with palette, typography, components, and two documented modes.<br>• Product with the 4 screens and 2 modals of the main flow.<br>• Foundations with typographic scale and color tokens.<br>• Components with all components and variants.<br>• Full navigable prototype with logic variables.', figma: 'https://www.figma.com/design/FW0OxGFUjrAItyRSXtAsd3/Chute-Certo---Design-System?node-id=90-2&t=aOA7A8r87UhZM992-1' },
+                { titleEN: 'Project Status', contentEN: 'Conceptual project developed for UX/UI Design practice. Tools used: Figma (Multi-mode Variables, Components, Variants, Auto Layout, Prototyping with Overlays and Conditionals, Figma Motion).' }
+            ]
         }];
 
 
@@ -2972,8 +3012,9 @@
                 const title = enSection ? enSection.titleEN : section.title;
                 let contentHtml = (enSection && enSection.contentEN != null) ? enSection.contentEN : section.content;
 
-                if (section.image) {
-                    contentHtml += `<div style="margin-top: 12px;"><img src="assets/${section.image}" alt="${title} - ${titulo}" style="width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);" loading="lazy" /></div>`;
+                const imgSrc = (enSection && enSection.imageEN) ? enSection.imageEN : section.image;
+                if (imgSrc) {
+                    contentHtml += `<div style="margin-top: 12px;"><img src="assets/${imgSrc}" alt="${title} - ${titulo}" style="width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06);" loading="lazy" /></div>`;
                 }
 
                 if (section.figma) {
@@ -2994,10 +3035,10 @@
                     <img src="${data.banner}" alt="${titulo}" />
                 </div>
                 <div class="case-header">
-                    <h2>${titulo}</h2>
+                    <h2 translate="no">${titulo}</h2>
                     <div class="case-meta">
                         <span><i class="fas fa-tag"></i> ${categoria}</span>
-                        <span><i class="fas fa-tools"></i> ${enData ? 'Tools' : 'Ferramentas'}: ${categoria === 'Visual Identity' ? 'Figma | Canva' : 'Figma'}</span>
+                        <span><i class="fas fa-tools"></i> ${enData ? 'Tools' : 'Ferramentas'}: ${data.ferramentas || (categoria === 'Visual Identity' ? 'Figma | Canva' : categoria === 'UX Case Study' ? 'Figma | FigJam' : 'Figma')}</span>
                         <span><i class="fas fa-user"></i> UX/UI Designer</span>
                     </div>
                 </div>
@@ -3022,7 +3063,32 @@
         });
 
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeCase();
+            if (e.key === 'Escape') {
+                closeLightbox();
+                closeCase();
+            }
+        });
+
+        // ===== LIGHTBOX =====
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        lightbox.addEventListener('click', closeLightbox);
+
+        document.getElementById('caseContent').addEventListener('click', function(e) {
+            if (e.target.tagName === 'IMG' && !e.target.closest('.case-banner')) {
+                openLightbox(e.target.src, e.target.alt);
+            }
         });
 
         // ===== FILTROS =====
@@ -3144,6 +3210,10 @@
             const cvPT = 'assets/Curriculo-Paola-Fagundes.pdf';
             const cvEN = 'assets/Curriculum-Paola-Fagundes-English.pdf';
             cvLinks.forEach(link => link.href = isEN ? cvEN : cvPT);
+
+            document.querySelectorAll('[data-pt][data-en]').forEach(el => {
+                el.textContent = isEN ? el.dataset.en : el.dataset.pt;
+            });
 
             toggleMenu(false);
 
